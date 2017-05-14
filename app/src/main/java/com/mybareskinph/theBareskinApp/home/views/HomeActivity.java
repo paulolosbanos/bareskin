@@ -1,4 +1,4 @@
-package com.mybareskinph.theBareskinApp.views;
+package com.mybareskinph.theBareskinApp.home.views;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_inventory) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_home) {
 
         } else if (id == R.id.nav_order) {
