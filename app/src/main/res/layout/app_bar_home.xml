@@ -29,7 +29,7 @@
                     android:fontFamily="sans-serif-medium"
                     android:gravity="left"
                     android:text="Home"
-                    android:textColor="@color/fontColorMain"
+                    android:textColor="@color/white"
                     android:textSize="18sp" />
             </LinearLayout>
 
