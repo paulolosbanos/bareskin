@@ -18,7 +18,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header_home"
-        app:itemIconTint="@color/colorAccent"
+        app:itemIconTint="@color/brightGreen"
+        app:itemTextColor="@color/colorAccent"
         app:menu="@menu/activity_home_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
