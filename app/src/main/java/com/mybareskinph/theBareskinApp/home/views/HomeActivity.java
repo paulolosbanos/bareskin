@@ -1,4 +1,4 @@
-package com.mybareskinph.theBareskinApp.views;
+package com.mybareskinph.theBareskinApp.home.views;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
