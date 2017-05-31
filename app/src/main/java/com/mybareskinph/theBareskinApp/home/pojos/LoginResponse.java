@@ -17,7 +17,7 @@ public class LoginResponse {
     private Integer storePoints;
     @SerializedName("store-value")
     @Expose
-    private Integer storeValue;
+    private Long storeValue;
     @SerializedName("store-inventory")
     @Expose
     private List<StoreInventory> storeInventory = null;
@@ -49,11 +49,11 @@ public class LoginResponse {
         this.storePoints = storePoints;
     }
 
-    public Integer getStoreValue() {
+    public Long getStoreValue() {
         return storeValue;
     }
 
-    public void setStoreValue(Integer storeValue) {
+    public void setStoreValue(Long storeValue) {
         this.storeValue = storeValue;
     }
 

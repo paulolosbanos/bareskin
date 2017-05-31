@@ -16,8 +16,8 @@ public class Money implements Serializable {
     private static final String MINUS = "-";
     private static final String NON_BREAKING_SPACE = "\u00a0";
 
-    private static final String CURRENCY_SIGN_PESO = "\u20b1";
-    private static final String CURRENCY_SIGN_PESO_SIMPLE = "PhP";
+    private static final String CURRENCY_SIGN_PESO = "\u20b1 ";
+    private static final String CURRENCY_SIGN_PESO_SIMPLE = "PhP ";
     private static final String EMPTY = "";
 
     /**
@@ -26,6 +26,7 @@ public class Money implements Serializable {
      * 10000 in PHP means 100 peso.
      * 10000 in INDO means 10000 rp
      */
+
     private long normalizedAmount;
 
     private Currency currency;
