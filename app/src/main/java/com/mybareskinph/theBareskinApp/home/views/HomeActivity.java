@@ -12,14 +12,14 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.mybareskinph.theBareskinApp.BaseActivity;
 import com.mybareskinph.theBareskinApp.R;
+import com.mybareskinph.theBareskinApp.base.BaseActivity;
 
 public class HomeActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
@@ -42,8 +42,6 @@ public class HomeActivity extends BaseActivity
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.darkerBrown));
         }
         initHome();
-
-
     }
 
     private void initHome() {
