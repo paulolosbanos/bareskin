@@ -110,7 +110,7 @@ public class HomeFragment extends BaseFragment implements HomeView{
                         loadingInvite.setVisibility(View.GONE);
                         inviteCodeContainer.setVisibility(View.VISIBLE);
 
-                        currentSupplyWorth.setText(Money.formatPrice("PHP",loginResponse.getStoreValue()));
+                        currentSupplyWorth.setText(Money.formatPrice(Money.PHILIPPINE_PESO,loginResponse.getStoreValue()));
                         inviteCode.setText(loginResponse.getUserCredential().getUid());
                     }
                 });
