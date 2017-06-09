@@ -9,28 +9,18 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.mybareskinph.theBareskinApp.App;
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.base.BaseFragment;
+import com.mybareskinph.theBareskinApp.home.implementations.HomePresenterImpl;
 import com.mybareskinph.theBareskinApp.home.pojos.LoginResponse;
-import com.mybareskinph.theBareskinApp.home.presenters.HomePresenter;
-import com.mybareskinph.theBareskinApp.home.services.MainService;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomeView;
-import com.mybareskinph.theBareskinApp.util.LoggerUtil;
+import com.mybareskinph.theBareskinApp.home.viewInterfaces.SupplyView;
 import com.mybareskinph.theBareskinApp.util.Money;
-
-import java.io.IOException;
-
-import javax.inject.Inject;
+import com.mybareskinph.theBareskinApp.util.StoreComputationUtil;
 
 import butterknife.BindView;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.HttpException;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
-public class HomeFragment extends BaseFragment implements HomeView{
+public class HomeFragment extends BaseFragment implements HomeView {
 
     @BindView(R.id.tv_current_supply_worth)
     TextView currentSupplyWorth;
@@ -53,13 +43,22 @@ public class HomeFragment extends BaseFragment implements HomeView{
     @BindView(R.id.pb_loading_future_earning)
     ProgressBar loadingFutureEarning;
 
-    @Inject
-    Retrofit retrofit;
+    @BindView(R.id.tv_sales_history)
+    TextView salesHistory;
 
-    HomePresenter presenter;
+    @BindView(R.id.tv_sell_now)
+    TextView sellNow;
+
+    @BindView(R.id.tv_details)
+    TextView details;
+
+    @BindView(R.id.tv_order_now)
+    TextView orderNow;
+
+    HomePresenterImpl presenter;
 
     public HomeFragment() {
-        presenter = new HomePresenter(this);
+
     }
 
     public static HomeFragment newInstance() {
@@ -71,48 +70,69 @@ public class HomeFragment extends BaseFragment implements HomeView{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_layout_home, container, false);
         bindView(this, view);
-
+        presenter = new HomePresenterImpl(this, getRetrofit());
+        details.setOnClickListener(view1 -> presenter.onDetailsClick());
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.login();
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter.login();
     }
 
     @Override
-    public void onLogin() {
-        MainService svc = getRetrofit().create(MainService.class);
-        svc.login()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<LoginResponse>() {
-                    @Override
-                    public void onCompleted() {
+    public void showFutureEarning(LoginResponse loginResponse) {
+        loadingFutureEarning.setVisibility(View.GONE);
+        futureEarning.setVisibility(View.VISIBLE);
+        futureEarning.setText(Money.formatPrice(Money.PHILIPPINE_PESO, StoreComputationUtil.computeEarningTrajectory(loginResponse.getStoreInventory())));
+    }
 
-                    }
+    @Override
+    public void hideFutureEarning() {
+        loadingFutureEarning.setVisibility(View.VISIBLE);
+        futureEarning.setVisibility(View.GONE);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        if(e instanceof HttpException) {
-                            LoggerUtil.log(((HttpException) e).code());
-                        } else if (e instanceof IOException) {
-                            LoggerUtil.log(e);
-                        }
-                    }
+    @Override
+    public void showSupplyWorth(LoginResponse loginResponse) {
+        loadingCurrentSupply.setVisibility(View.GONE);
+        currentSupplyWorth.setVisibility(View.VISIBLE);
+        currentSupplyWorth.setText(Money.formatPrice(Money.PHILIPPINE_PESO, loginResponse.getStoreValue()));
+    }
 
-                    @Override
-                    public void onNext(LoginResponse loginResponse) {
-                        loadingCurrentSupply.setVisibility(View.GONE);
-                        currentSupplyWorth.setVisibility(View.VISIBLE);
+    @Override
+    public void hideSupplyWorth() {
+        loadingCurrentSupply.setVisibility(View.VISIBLE);
+        currentSupplyWorth.setVisibility(View.GONE);
+    }
 
-                        loadingInvite.setVisibility(View.GONE);
-                        inviteCodeContainer.setVisibility(View.VISIBLE);
+    @Override
+    public void showInviteCode(LoginResponse loginResponse) {
+        loadingInvite.setVisibility(View.GONE);
+        inviteCodeContainer.setVisibility(View.VISIBLE);
+        inviteCode.setText(loginResponse.getUserCredential().getUid());
+    }
 
-                        currentSupplyWorth.setText(Money.formatPrice(Money.PHILIPPINE_PESO,loginResponse.getStoreValue()));
-                        inviteCode.setText(loginResponse.getUserCredential().getUid());
-                    }
-                });
+    @Override
+    public void hideInviteCode() {
+        loadingInvite.setVisibility(View.VISIBLE);
+        inviteCodeContainer.setVisibility(View.GONE);
+
+    }
+
+    @Override
+    public void goToSuppliesPage() {
+        SupplyFragment fragment = SupplyFragment.newInstance();
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment, fragment.getClass().getSimpleName())
+                .addToBackStack(fragment.getClass().getSimpleName())
+                .commit();
     }
 }

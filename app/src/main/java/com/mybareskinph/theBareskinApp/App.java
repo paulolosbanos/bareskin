@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class App extends Application {
 
     public Retrofit retrofit;
-    public static final String BASE_URL = "http://192.168.1.14:8087";
+    public static final String BASE_URL = "http://192.168.0.101:8087";
     private NetComponent mNetComponent;
 
     @Override

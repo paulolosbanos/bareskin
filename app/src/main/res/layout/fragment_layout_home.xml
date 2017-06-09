@@ -46,9 +46,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
-                        android:visibility="gone"
                         android:text="P 1,600.00"
-                        android:textSize="28sp" />
+                        android:textSize="28sp"
+                        android:visibility="gone" />
 
                     <ProgressBar
                         android:id="@+id/pb_loading_future_earning"
@@ -73,14 +73,20 @@
                     android:layout_height="wrap_content"
                     android:gravity="center|right"
                     android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:paddingLeft="16dp"
+                    android:paddingRight="0dp"
+                    android:paddingTop="16dp">
 
                     <TextView
                         android:id="@+id/tv_sales_history"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="14dp"
-                        android:paddingRight="14dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="8dp"
                         android:text="sales history"
                         android:textAllCaps="true"
                         android:textColor="@color/azure"
@@ -90,7 +96,12 @@
                         android:id="@+id/tv_sell_now"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="14dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="8dp"
                         android:text="sell now"
                         android:textAllCaps="true"
                         android:textColor="@color/azure"
@@ -135,9 +146,9 @@
                         android:paddingBottom="4dp"
                         android:paddingLeft="4dp"
                         android:paddingRight="4dp"
-                        android:visibility="gone"
                         android:text="P 5,000.00"
-                        android:textSize="28sp" />
+                        android:textSize="28sp"
+                        android:visibility="gone" />
 
                     <ProgressBar
                         android:id="@+id/pb_loading_current_supply_worth"
@@ -155,26 +166,34 @@
                     android:layout_height="wrap_content"
                     android:gravity="center|right"
                     android:orientation="horizontal"
-                    android:paddingBottom="16dp"
                     android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
+                    android:paddingRight="0dp">
 
                     <TextView
                         android:id="@+id/tv_details"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="14dp"
-                        android:paddingRight="14dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="8dp"
                         android:text="details"
                         android:textAllCaps="true"
                         android:textColor="@color/azure"
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/order_now"
+                        android:id="@+id/tv_order_now"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="14dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="8dp"
                         android:text="order now"
                         android:textAllCaps="true"
                         android:textColor="@color/azure"
@@ -259,9 +278,9 @@
                     <TextView
                         android:id="@+id/tv_invite_code"
                         android:layout_width="wrap_content"
-                        android:minWidth="200dp"
-                        android:gravity="center"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:minWidth="200dp"
                         android:text="AHB12AgAg79t98GBA87y"
                         android:textSize="16sp"
                         android:textStyle="bold" />

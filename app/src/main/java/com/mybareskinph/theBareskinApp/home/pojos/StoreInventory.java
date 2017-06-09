@@ -13,13 +13,13 @@ public class StoreInventory {
     private String itemName;
     @SerializedName("item-cost-unit")
     @Expose
-    private Integer itemCostUnit;
+    private Long itemCostUnit;
     @SerializedName("item-srp-unit")
     @Expose
-    private Integer itemSrpUnit;
+    private Long itemSrpUnit;
     @SerializedName("item-qty")
     @Expose
-    private Integer itemQty;
+    private Long itemQty;
 
     public String getItemId() {
         return itemId;
@@ -37,27 +37,27 @@ public class StoreInventory {
         this.itemName = itemName;
     }
 
-    public Integer getItemCostUnit() {
+    public Long getItemCostUnit() {
         return itemCostUnit;
     }
 
-    public void setItemCostUnit(Integer itemCostUnit) {
+    public void setItemCostUnit(Long itemCostUnit) {
         this.itemCostUnit = itemCostUnit;
     }
 
-    public Integer getItemSrpUnit() {
+    public Long getItemSrpUnit() {
         return itemSrpUnit;
     }
 
-    public void setItemSrpUnit(Integer itemSrpUnit) {
+    public void setItemSrpUnit(Long itemSrpUnit) {
         this.itemSrpUnit = itemSrpUnit;
     }
 
-    public Integer getItemQty() {
+    public Long getItemQty() {
         return itemQty;
     }
 
-    public void setItemQty(Integer itemQty) {
+    public void setItemQty(Long itemQty) {
         this.itemQty = itemQty;
     }
 
