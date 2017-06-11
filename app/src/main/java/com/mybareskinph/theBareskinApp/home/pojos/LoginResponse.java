@@ -24,7 +24,7 @@ public class LoginResponse {
     private ArrayList<StoreItem> storeInventory = null;
     @SerializedName("store-orders")
     @Expose
-    private List<StoreOrder> storeOrders = null;
+    private ArrayList<StoreOrder> storeOrders = null;
 
     public String getStatus() {
         return status;
@@ -66,11 +66,11 @@ public class LoginResponse {
         this.storeInventory = storeInventory;
     }
 
-    public List<StoreOrder> getStoreOrders() {
+    public ArrayList<StoreOrder> getStoreOrders() {
         return storeOrders;
     }
 
-    public void setStoreOrders(List<StoreOrder> storeOrders) {
+    public void setStoreOrders(ArrayList<StoreOrder> storeOrders) {
         this.storeOrders = storeOrders;
     }
 

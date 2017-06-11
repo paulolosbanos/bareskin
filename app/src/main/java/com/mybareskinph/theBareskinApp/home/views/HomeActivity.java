@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.base.BaseActivity;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
+import com.mybareskinph.theBareskinApp.home.pojos.StoreOrder;
 import com.mybareskinph.theBareskinApp.util.Constants;
 
 import java.util.ArrayList;
@@ -97,6 +98,8 @@ public class HomeActivity extends BaseActivity
                 toolbarTitle.setText("Supplies");
                 break;
             case R.id.nav_order:
+                fragment = OrderFragment.newInstance((ArrayList<StoreOrder>) getGlobalObjects().get(Constants.ORDERS));
+                toolbarTitle.setText("Orders");
                 break;
             case R.id.nav_about:
                 break;

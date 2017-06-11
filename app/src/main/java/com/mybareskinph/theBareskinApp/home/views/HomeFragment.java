@@ -84,6 +84,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     @Override
     public void onResume() {
         super.onResume();
+        changeToolbarTitle("Home");
         presenter.login();
     }
 

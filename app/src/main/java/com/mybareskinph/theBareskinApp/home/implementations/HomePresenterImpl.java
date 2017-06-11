@@ -2,6 +2,7 @@ package com.mybareskinph.theBareskinApp.home.implementations;
 
 import com.mybareskinph.theBareskinApp.home.pojos.LoginResponse;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
+import com.mybareskinph.theBareskinApp.home.pojos.StoreOrder;
 import com.mybareskinph.theBareskinApp.home.services.MainService;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomePresenter;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomeView;
@@ -57,6 +58,7 @@ public class HomePresenterImpl implements HomePresenter {
                         mView.showInviteCode(loginResponse);
                         mView.showSupplyWorth(loginResponse);
                         loadSupplies(loginResponse.getStoreInventory());
+                        loadOrders(loginResponse.getStoreOrders());
                     }
                 });
     }
@@ -69,5 +71,10 @@ public class HomePresenterImpl implements HomePresenter {
     @Override
     public void loadSupplies(ArrayList<StoreItem> items) {
         mView.getGlobalObjects().put(Constants.SUPPLIES, items);
+    }
+
+    @Override
+    public void loadOrders(ArrayList<StoreOrder> orders) {
+        mView.getGlobalObjects().put(Constants.ORDERS, orders);
     }
 }

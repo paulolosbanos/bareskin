@@ -10,31 +10,36 @@ import android.view.ViewGroup;
 
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.base.BaseFragment;
+import com.mybareskinph.theBareskinApp.home.adapters.OrderAdapter;
 import com.mybareskinph.theBareskinApp.home.adapters.SupplyAdapter;
+import com.mybareskinph.theBareskinApp.home.implementations.OrderPresenterImpl;
 import com.mybareskinph.theBareskinApp.home.implementations.SupplyPresenterImpl;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
+import com.mybareskinph.theBareskinApp.home.pojos.StoreOrder;
+import com.mybareskinph.theBareskinApp.home.viewInterfaces.OrderView;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.SupplyView;
 import com.mybareskinph.theBareskinApp.util.Constants;
+import com.mybareskinph.theBareskinApp.util.StoreComputationUtil;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 
-public class SupplyFragment extends BaseFragment implements SupplyView {
+public class OrderFragment extends BaseFragment implements OrderView {
 
     @BindView(R.id.rv_supplies)
-    RecyclerView suppliesList;
+    RecyclerView orderList;
 
-    ArrayList<StoreItem> items;
-    SupplyPresenterImpl presenter;
+    ArrayList<StoreOrder> items;
+    OrderPresenterImpl presenter;
 
-    public SupplyFragment() {
+    public OrderFragment() {
     }
 
-    public static SupplyFragment newInstance(ArrayList<StoreItem> items) {
-        SupplyFragment fragment = new SupplyFragment();
+    public static OrderFragment newInstance(ArrayList<StoreOrder> orders) {
+        OrderFragment fragment = new OrderFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList(Constants.ITEMS, items);
+        bundle.putParcelableArrayList(Constants.ORDERS, orders);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -42,17 +47,17 @@ public class SupplyFragment extends BaseFragment implements SupplyView {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_layout_supply, container, false);
+        View view = inflater.inflate(R.layout.fragment_layout_order, container, false);
         bindView(this, view);
 
         if (getArguments() != null) {
-            items = getArguments().getParcelableArrayList(Constants.ITEMS);
+            items = getArguments().getParcelableArrayList(Constants.ORDERS);
         }
-        ((HomeActivity) getActivity()).changeToolbarTitle("Supplies");
-        presenter = new SupplyPresenterImpl(this, getRetrofit());
-        SupplyAdapter adapter = new SupplyAdapter(getContext(), items);
-        suppliesList.setLayoutManager(new LinearLayoutManager(getContext()));
-        suppliesList.setAdapter(adapter);
+        ((HomeActivity) getActivity()).changeToolbarTitle("Orders");
+        presenter = new OrderPresenterImpl(this, getRetrofit());
+        OrderAdapter adapter = new OrderAdapter(getContext(), items);
+        orderList.setLayoutManager(new LinearLayoutManager(getContext()));
+        orderList.setAdapter(adapter);
 
         return view;
     }

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.mybareskinph.theBareskinApp.App;
+import com.mybareskinph.theBareskinApp.home.views.HomeActivity;
 
 import java.util.HashMap;
 
@@ -31,6 +32,10 @@ public class BaseFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivity = (BaseActivity) getActivity();
+    }
+
+    public void changeToolbarTitle(String title) {
+        ((HomeActivity) getActivity()).changeToolbarTitle(title);
     }
 
     public Retrofit getRetrofit() {
