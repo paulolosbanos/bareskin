@@ -1,9 +1,24 @@
 package com.mybareskinph.theBareskinApp.home.pojos;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class StoreInventory {
+import java.io.Serializable;
+
+public class StoreItem implements Parcelable, Serializable{
+
+    public static final Parcelable.Creator<StoreItem> CREATOR = new Parcelable.Creator<StoreItem>() {
+        public StoreItem createFromParcel(Parcel source) {
+            return new StoreItem(source);
+        }
+
+        public StoreItem[] newArray(int size) {
+            return new StoreItem[size];
+        }
+    };
 
     @SerializedName("item-id")
     @Expose
@@ -20,6 +35,18 @@ public class StoreInventory {
     @SerializedName("item-qty")
     @Expose
     private Long itemQty;
+
+    public StoreItem() {
+
+    }
+
+    public StoreItem(Parcel in) {
+        this.itemId = in.readString();
+        this.itemName = in.readString();
+        this.itemCostUnit = in.readLong();
+        this.itemSrpUnit = in.readLong();
+        this.itemQty = in.readLong();
+    }
 
     public String getItemId() {
         return itemId;
@@ -61,4 +88,17 @@ public class StoreInventory {
         this.itemQty = itemQty;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(itemId);
+        dest.writeString(itemName);
+        dest.writeLong(itemCostUnit);
+        dest.writeLong(itemSrpUnit);
+        dest.writeLong(itemQty);
+    }
 }

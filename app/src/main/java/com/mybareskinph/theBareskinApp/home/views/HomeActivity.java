@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.Window;
@@ -15,6 +16,10 @@ import android.view.WindowManager;
 
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.base.BaseActivity;
+import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
+import com.mybareskinph.theBareskinApp.util.Constants;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -74,11 +79,11 @@ public class HomeActivity extends BaseActivity
         switch (item.getItemId()) {
             case R.id.nav_home:
                 fragment = HomeFragment.newInstance();
-                toolbar.setTitle("Home");
+                setTitle("Home");
                 break;
             case R.id.nav_inventory:
-                fragment = SupplyFragment.newInstance();
-                toolbar.setTitle("Supplies");
+                fragment = SupplyFragment.newInstance((ArrayList<StoreItem>) getGlobalObjects().get(Constants.SUPPLIES));
+                setTitle("Supplies");
                 break;
             case R.id.nav_order:
                 break;

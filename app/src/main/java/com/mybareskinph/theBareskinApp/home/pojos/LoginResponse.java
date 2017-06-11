@@ -1,5 +1,6 @@
 package com.mybareskinph.theBareskinApp.home.pojos;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -20,7 +21,7 @@ public class LoginResponse {
     private Long storeValue;
     @SerializedName("store-inventory")
     @Expose
-    private List<StoreInventory> storeInventory = null;
+    private ArrayList<StoreItem> storeInventory = null;
     @SerializedName("store-orders")
     @Expose
     private List<StoreOrder> storeOrders = null;
@@ -57,11 +58,11 @@ public class LoginResponse {
         this.storeValue = storeValue;
     }
 
-    public List<StoreInventory> getStoreInventory() {
+    public ArrayList<StoreItem> getStoreInventory() {
         return storeInventory;
     }
 
-    public void setStoreInventory(List<StoreInventory> storeInventory) {
+    public void setStoreInventory(ArrayList<StoreItem> storeInventory) {
         this.storeInventory = storeInventory;
     }
 

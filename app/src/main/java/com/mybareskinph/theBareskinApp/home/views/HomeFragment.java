@@ -10,13 +10,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.mybareskinph.theBareskinApp.R;
+import com.mybareskinph.theBareskinApp.base.BaseActivity;
 import com.mybareskinph.theBareskinApp.base.BaseFragment;
 import com.mybareskinph.theBareskinApp.home.implementations.HomePresenterImpl;
 import com.mybareskinph.theBareskinApp.home.pojos.LoginResponse;
+import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomeView;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.SupplyView;
+import com.mybareskinph.theBareskinApp.util.Constants;
 import com.mybareskinph.theBareskinApp.util.Money;
 import com.mybareskinph.theBareskinApp.util.StoreComputationUtil;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import butterknife.BindView;
 
@@ -128,11 +134,16 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
     @Override
     public void goToSuppliesPage() {
-        SupplyFragment fragment = SupplyFragment.newInstance();
+        SupplyFragment fragment = SupplyFragment.newInstance((ArrayList<StoreItem>) getGlobalObjects().get(Constants.SUPPLIES));
 
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, fragment, fragment.getClass().getSimpleName())
                 .addToBackStack(fragment.getClass().getSimpleName())
                 .commit();
+    }
+
+    @Override
+    public HashMap<String, Object> getGlobalObjects() {
+        return ((BaseActivity) getActivity()).getGlobalObjects();
     }
 }

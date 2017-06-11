@@ -2,6 +2,8 @@ package com.mybareskinph.theBareskinApp.home.viewInterfaces;
 
 import com.mybareskinph.theBareskinApp.home.pojos.LoginResponse;
 
+import java.util.HashMap;
+
 public interface HomeView {
 
     void showFutureEarning(LoginResponse loginResponse);
@@ -17,4 +19,6 @@ public interface HomeView {
     void hideInviteCode();
 
     void goToSuppliesPage();
+
+    HashMap<String, Object> getGlobalObjects();
 }

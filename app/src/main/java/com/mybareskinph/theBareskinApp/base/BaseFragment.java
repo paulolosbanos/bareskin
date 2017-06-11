@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.mybareskinph.theBareskinApp.App;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;

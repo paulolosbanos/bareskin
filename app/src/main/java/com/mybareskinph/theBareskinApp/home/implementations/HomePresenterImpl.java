@@ -1,12 +1,15 @@
 package com.mybareskinph.theBareskinApp.home.implementations;
 
 import com.mybareskinph.theBareskinApp.home.pojos.LoginResponse;
+import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
 import com.mybareskinph.theBareskinApp.home.services.MainService;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomePresenter;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomeView;
+import com.mybareskinph.theBareskinApp.util.Constants;
 import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.HttpException;
@@ -38,7 +41,7 @@ public class HomePresenterImpl implements HomePresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        if(e instanceof HttpException) {
+                        if (e instanceof HttpException) {
                             LoggerUtil.log(((HttpException) e).code());
                         } else if (e instanceof IOException) {
                             LoggerUtil.log(e);
@@ -50,6 +53,7 @@ public class HomePresenterImpl implements HomePresenter {
                         mView.showFutureEarning(loginResponse);
                         mView.showInviteCode(loginResponse);
                         mView.showSupplyWorth(loginResponse);
+                        loadSupplies(loginResponse.getStoreInventory());
                     }
                 });
     }
@@ -57,5 +61,10 @@ public class HomePresenterImpl implements HomePresenter {
     @Override
     public void onDetailsClick() {
         mView.goToSuppliesPage();
+    }
+
+    @Override
+    public void loadSupplies(ArrayList<StoreItem> items) {
+        mView.getGlobalObjects().put(Constants.SUPPLIES, items);
     }
 }

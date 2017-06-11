@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.mybareskinph.theBareskinApp.App;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 import retrofit2.Retrofit;
@@ -14,6 +16,9 @@ public class BaseActivity extends AppCompatActivity {
 
     @Inject
     Retrofit mRetrofit;
+
+    @Inject
+    HashMap<String, Object> globalObjects;
 
     App mAppInstance;
 
@@ -26,6 +31,10 @@ public class BaseActivity extends AppCompatActivity {
 
     public Retrofit getRetrofit() {
         return mRetrofit;
+    }
+
+    public HashMap<String, Object> getGlobalObjects() {
+        return globalObjects;
     }
 
     public App getmAppInstance() {
