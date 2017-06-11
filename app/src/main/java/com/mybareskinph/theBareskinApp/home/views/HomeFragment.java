@@ -97,25 +97,33 @@ public class HomeFragment extends BaseFragment implements HomeView {
         loadingFutureEarning.setVisibility(View.GONE);
         futureEarning.setVisibility(View.VISIBLE);
         futureEarning.setText(Money.formatPrice(Money.PHILIPPINE_PESO, StoreComputationUtil.computeEarningTrajectory(loginResponse.getStoreInventory())));
+        salesHistory.setEnabled(true);
+        sellNow.setEnabled(true);
     }
 
     @Override
     public void hideFutureEarning() {
         loadingFutureEarning.setVisibility(View.VISIBLE);
         futureEarning.setVisibility(View.GONE);
+        salesHistory.setEnabled(false);
+        sellNow.setEnabled(false);
     }
 
     @Override
     public void showSupplyWorth(LoginResponse loginResponse) {
         loadingCurrentSupply.setVisibility(View.GONE);
         currentSupplyWorth.setVisibility(View.VISIBLE);
-        currentSupplyWorth.setText(Money.formatPrice(Money.PHILIPPINE_PESO, loginResponse.getStoreValue()));
+        currentSupplyWorth.setText(Money.formatPrice(Money.PHILIPPINE_PESO, StoreComputationUtil.computeInventoryWorth(loginResponse.getStoreInventory())));
+        details.setEnabled(true);
+        orderNow.setEnabled(true);
     }
 
     @Override
     public void hideSupplyWorth() {
         loadingCurrentSupply.setVisibility(View.VISIBLE);
         currentSupplyWorth.setVisibility(View.GONE);
+        details.setEnabled(false);
+        orderNow.setEnabled(false);
     }
 
     @Override

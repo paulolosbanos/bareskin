@@ -1,5 +1,6 @@
 package com.mybareskinph.theBareskinApp.home.views;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,9 +11,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.base.BaseActivity;
@@ -21,15 +25,22 @@ import com.mybareskinph.theBareskinApp.util.Constants;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class HomeActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Toolbar toolbar;
+
+    @BindView(R.id.toolbar_title)
+    TextView toolbarTitle;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        ButterKnife.bind(this);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -41,7 +52,7 @@ public class HomeActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.setCheckedItem(R.id.nav_home);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -79,11 +90,11 @@ public class HomeActivity extends BaseActivity
         switch (item.getItemId()) {
             case R.id.nav_home:
                 fragment = HomeFragment.newInstance();
-                setTitle("Home");
+                toolbarTitle.setText("Home");
                 break;
             case R.id.nav_inventory:
                 fragment = SupplyFragment.newInstance((ArrayList<StoreItem>) getGlobalObjects().get(Constants.SUPPLIES));
-                setTitle("Supplies");
+                toolbarTitle.setText("Supplies");
                 break;
             case R.id.nav_order:
                 break;
@@ -103,5 +114,8 @@ public class HomeActivity extends BaseActivity
         return true;
     }
 
+    public void changeToolbarTitle(String title) {
+        toolbarTitle.setText(title);
+    }
 
 }

@@ -16,6 +16,17 @@ public class StoreComputationUtil {
         return total;
     }
 
+    public static Long computeInventoryWorth(List<StoreItem> items) {
+        Long total = 0L;
+
+        for (StoreItem item : items) {
+            long totalCost = item.getItemCostUnit() * item.getItemQty();
+            total += totalCost;
+        }
+        return total;
+    }
+
+
     private static Long computeUnitProfit(StoreItem item) {
         return item.getItemSrpUnit() - item.getItemCostUnit();
     }

@@ -89,7 +89,7 @@
                         android:paddingTop="8dp"
                         android:text="sales history"
                         android:textAllCaps="true"
-                        android:textColor="@color/azure"
+                        android:textColor="@color/selector_textview"
                         android:textSize="16sp" />
 
                     <TextView
@@ -104,7 +104,7 @@
                         android:paddingTop="8dp"
                         android:text="sell now"
                         android:textAllCaps="true"
-                        android:textColor="@color/azure"
+                        android:textColor="@color/selector_textview"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -181,7 +181,7 @@
                         android:paddingTop="8dp"
                         android:text="details"
                         android:textAllCaps="true"
-                        android:textColor="@color/azure"
+                        android:textColor="@color/selector_textview"
                         android:textSize="16sp" />
 
                     <TextView
@@ -196,7 +196,7 @@
                         android:paddingTop="8dp"
                         android:text="order now"
                         android:textAllCaps="true"
-                        android:textColor="@color/azure"
+                        android:textColor="@color/selector_textview"
                         android:textSize="16sp" />
 
                 </LinearLayout>

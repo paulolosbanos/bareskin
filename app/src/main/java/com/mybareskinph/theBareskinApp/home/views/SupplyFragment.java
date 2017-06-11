@@ -2,7 +2,6 @@ package com.mybareskinph.theBareskinApp.home.views;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -49,6 +48,8 @@ public class SupplyFragment extends BaseFragment implements SupplyView {
         if (getArguments() != null) {
             items = getArguments().getParcelableArrayList(Constants.ITEMS);
         }
+        ((HomeActivity) getActivity()).changeToolbarTitle("Supplies");
+
         presenter = new SupplyPresenterImpl(this, getRetrofit());
         SupplyAdapter adapter = new SupplyAdapter(getContext(), items);
         suppliesList.setLayoutManager(new LinearLayoutManager(getContext()));

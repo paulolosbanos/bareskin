@@ -30,6 +30,9 @@ public class HomePresenterImpl implements HomePresenter {
     @Override
     public void login() {
         MainService svc = mRetrofit.create(MainService.class);
+        mView.hideSupplyWorth();
+        mView.hideFutureEarning();
+        mView.hideInviteCode();
         svc.login()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
