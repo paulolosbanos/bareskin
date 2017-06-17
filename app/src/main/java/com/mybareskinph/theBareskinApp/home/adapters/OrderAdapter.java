@@ -5,13 +5,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreOrder;
-import com.mybareskinph.theBareskinApp.util.Money;
+import com.mybareskinph.theBareskinApp.home.widgets.Order;
+import com.mybareskinph.theBareskinApp.util.CalendarDate;
+import com.mybareskinph.theBareskinApp.util.DateFormats;
 
 import java.util.List;
 
@@ -22,9 +25,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     private List<StoreOrder> orderList;
     private final LayoutInflater inflater;
+    private Context context;
+
 
     public OrderAdapter(Context context, List<StoreOrder> orders) {
         this.orderList = orders;
+        this.context = context;
         inflater = LayoutInflater.from(context);
     }
 
@@ -36,15 +42,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        StoreOrder item = orderList.get(i);
-        /*
-        viewHolder.itemName.setText(item.getItemName());
-        viewHolder.itemQty.setText(item.getItemQty() + " pcs in stock");
-        viewHolder.itemCostPerUnit.setText(Money.formatPrice(Money.PHILIPPINE_PESO, item.getItemCostUnit()));
-        viewHolder.itemSrpPerUnit.setText(Money.formatPrice(Money.PHILIPPINE_PESO, item.getItemSrpUnit()));
-        viewHolder.itemTotalCost.setText(Money.formatPrice(Money.PHILIPPINE_PESO, item.getItemCostUnit() * item.getItemQty()));
-        viewHolder.itemTotalRevenue.setText(Money.formatPrice(Money.PHILIPPINE_PESO, item.getItemSrpUnit() * item.getItemQty()));
-        */
+        StoreOrder order = orderList.get(i);
+        for (StoreItem item : order.getItems()) {
+            viewHolder.orderListContainer.addView(new Order(context, item));
+        }
+        viewHolder.dateOrderNumber.setText(context.getString(R.string.label_x_hyphen_word_x,
+                DateFormats.DATE_FORMAT_EMDYYYY.format(CalendarDate.fromString(order.getOrderStartDate()).toJavaDate()),
+                "Order",
+                order.getOrderId()));
+        viewHolder.itemStatus.setText(order.getStatus());
     }
 
     @Override
@@ -73,24 +79,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.ll_order_list)
+        LinearLayout orderListContainer;
 
-        @BindView(R.id.item_name)
-        TextView itemName;
+        @BindView(R.id.tv_date_order_number)
+        TextView dateOrderNumber;
 
-        @BindView(R.id.item_qty)
-        TextView itemQty;
-
-        @BindView(R.id.item_cost_unit)
-        TextView itemCostPerUnit;
-
-        @BindView(R.id.item_srp_unit)
-        TextView itemSrpPerUnit;
-
-        @BindView(R.id.item_total_cost)
-        TextView itemTotalCost;
-
-        @BindView(R.id.item_total_revenue)
-        TextView itemTotalRevenue;
+        @BindView(R.id.item_status)
+        TextView itemStatus;
 
         public ViewHolder(View view) {
             super(view);

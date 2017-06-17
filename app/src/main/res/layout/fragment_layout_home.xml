@@ -38,7 +38,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
-                        android:text="You will earn a total of"
+                        android:text="@string/label_future_earning_1"
                         android:textSize="16sp" />
 
                     <TextView
@@ -46,7 +46,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
-                        android:text="P 1,600.00"
                         android:textSize="28sp"
                         android:visibility="gone" />
 
@@ -55,7 +54,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="4dp"
                         android:indeterminate="true"
                         android:indeterminateDrawable="@drawable/pb_accented_bg" />
 
@@ -63,7 +62,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
-                        android:text="based on your current supply stocks"
+                        android:text="@string/label_future_earning_2"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -87,7 +86,7 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
                         android:paddingTop="8dp"
-                        android:text="sales history"
+                        android:text="@string/label_button_sales_history"
                         android:textAllCaps="true"
                         android:textColor="@color/selector_textview"
                         android:textSize="16sp" />
@@ -102,7 +101,7 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
                         android:paddingTop="8dp"
-                        android:text="sell now"
+                        android:text="@string/label_button_sell_now"
                         android:textAllCaps="true"
                         android:textColor="@color/selector_textview"
                         android:textSize="16sp" />
@@ -136,7 +135,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
-                        android:text="Your supplies are worth"
+                        android:text="@string/label_supply_worth_1"
                         android:textSize="16sp" />
 
                     <TextView
@@ -146,7 +145,6 @@
                         android:paddingBottom="4dp"
                         android:paddingLeft="4dp"
                         android:paddingRight="4dp"
-                        android:text="P 5,000.00"
                         android:textSize="28sp"
                         android:visibility="gone" />
 
@@ -155,7 +153,7 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="4dp"
                         android:indeterminate="true"
                         android:indeterminateDrawable="@drawable/pb_accented_bg" />
 
@@ -179,7 +177,7 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
                         android:paddingTop="8dp"
-                        android:text="details"
+                        android:text="@string/label_button_details"
                         android:textAllCaps="true"
                         android:textColor="@color/selector_textview"
                         android:textSize="16sp" />
@@ -194,7 +192,7 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
                         android:paddingTop="8dp"
-                        android:text="order now"
+                        android:text="@string/label_button_order_now"
                         android:textAllCaps="true"
                         android:textColor="@color/selector_textview"
                         android:textSize="16sp" />
@@ -230,7 +228,7 @@
                         android:paddingLeft="4dp"
                         android:paddingRight="4dp"
                         android:paddingTop="4dp"
-                        android:text="Invite"
+                        android:text="@string/label_invite"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -241,7 +239,7 @@
                         android:paddingLeft="4dp"
                         android:paddingRight="4dp"
                         android:paddingTop="4dp"
-                        android:text="Get discounts"
+                        android:text="@string/label_invite_1"
                         android:textColor="@color/white"
                         android:textSize="24sp" />
 
@@ -252,7 +250,7 @@
                         android:paddingLeft="4dp"
                         android:paddingRight="4dp"
                         android:paddingTop="0dp"
-                        android:text="whenever you refer a friend"
+                        android:text="@string/label_invite_2"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
@@ -281,7 +279,6 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:minWidth="200dp"
-                        android:text="AHB12AgAg79t98GBA87y"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 

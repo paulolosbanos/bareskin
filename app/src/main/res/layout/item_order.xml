@@ -1,90 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:layout_marginTop="2dp"
-    app:cardElevation="0dp">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="4dp">
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
-            app:srcCompat="@drawable/image_placeholder" />
+        <TextView
+            android:id="@+id/tv_date_order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@color/cardview_dark_background"
+            android:gravity="center"
+            android:paddingBottom="4dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingTop="4dp"
+            android:text="@string/label_x_hyphen_word_x"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:gravity="center|left"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/item_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@color/azure"
+            android:gravity="center"
+            android:paddingBottom="4dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingTop="4dp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/item_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Luminous Whitening Soap"
-                android:textSize="14dp" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/item_qty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12 pcs in stock"
-                android:textSize="12dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="12dp"
-            android:layout_weight="1"
-            android:gravity="center|right"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/item_cost_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P 70.00"
-                android:textColor="@color/grey"
-                android:textSize="10dp" />
-
-            <TextView
-                android:id="@+id/item_srp_unit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P 120.00"
-                android:textColor="@color/azure"
-                android:textSize="10dp" />
-
-            <TextView
-                android:id="@+id/item_total_cost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/grey"
-                android:text="P 840.00"
-                android:textSize="12dp" />
-
-            <TextView
-                android:id="@+id/item_total_revenue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P 1,440.00"
-                android:textColor="@color/azure"
-                android:textSize="12dp" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-</android.support.v7.widget.CardView>
+    <LinearLayout
+        android:id="@+id/ll_order_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+</LinearLayout>

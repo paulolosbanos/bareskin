@@ -34,6 +34,8 @@ public class HomeActivity extends BaseActivity
 
     Toolbar toolbar;
 
+    NavigationView navView;
+
     @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
 
@@ -51,9 +53,9 @@ public class HomeActivity extends BaseActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.nav_home);
+        navView = (NavigationView) findViewById(R.id.nav_view);
+        navView.setNavigationItemSelectedListener(this);
+        navView.setCheckedItem(R.id.nav_home);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -115,6 +117,10 @@ public class HomeActivity extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void changeCheckedNavTitle(int id) {
+        navView.setCheckedItem(id);
     }
 
     public void changeToolbarTitle(String title) {

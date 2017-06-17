@@ -23,16 +23,23 @@ public class StoreOrder implements Parcelable, Serializable {
 
     @SerializedName("items")
     @Expose
-    private ArrayList<Item> items = null;
+    private ArrayList<StoreItem> items = null;
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("order-start-date")
+    @Expose
+    private String orderStartDate;
+    @SerializedName("order-id")
+    @Expose
+    private String orderId;
 
-    public ArrayList<Item> getItems() {
+
+    public ArrayList<StoreItem> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<Item> items) {
+    public void setItems(ArrayList<StoreItem> items) {
         this.items = items;
     }
 
@@ -42,6 +49,22 @@ public class StoreOrder implements Parcelable, Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getOrderStartDate() {
+        return orderStartDate;
+    }
+
+    public void setOrderStartDate(String orderStartDate) {
+        this.orderStartDate = orderStartDate;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public StoreOrder() {

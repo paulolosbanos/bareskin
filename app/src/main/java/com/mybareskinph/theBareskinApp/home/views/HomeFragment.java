@@ -144,7 +144,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     @Override
     public void goToSuppliesPage() {
         SupplyFragment fragment = SupplyFragment.newInstance((ArrayList<StoreItem>) getGlobalObjects().get(Constants.SUPPLIES));
-
+        ((HomeActivity) getActivity()).changeCheckedNavTitle(R.id.nav_inventory);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, fragment, fragment.getClass().getSimpleName())
                 .addToBackStack(fragment.getClass().getSimpleName())
@@ -155,4 +155,5 @@ public class HomeFragment extends BaseFragment implements HomeView {
     public HashMap<String, Object> getGlobalObjects() {
         return ((BaseActivity) getActivity()).getGlobalObjects();
     }
+
 }

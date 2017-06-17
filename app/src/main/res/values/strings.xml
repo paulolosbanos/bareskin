@@ -5,4 +5,20 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="label_home">Home</string>
+    <string name="label_invite">Invite</string>
+    <string name="label_invite_1">Get discounts</string>
+    <string name="label_invite_2">whenever you refer a friend</string>
+    <string name="label_future_earning_1">You will earn a total of</string>
+    <string name="label_future_earning_2">based on your current supply stocks</string>
+    <string name="label_supply_worth_1">Your supplies are worth</string>
+    <string name="label_button_sales_history">sales history</string>
+    <string name="label_button_sell_now">sell now</string>
+    <string name="label_button_details">details</string>
+    <string name="label_button_order_now">order now</string>
+
+    <string name="label_greet_user">Hi %s!</string>
+    <string name="label_x_report_date">These are your %1$s as of %2$s</string>
+    <string name="label_x_hyphen_word_x">%1$s - %2$s %3$s</string>
+    <string name="label_x_pcs_ordered">%s pcs ordered</string>
 </resources>
