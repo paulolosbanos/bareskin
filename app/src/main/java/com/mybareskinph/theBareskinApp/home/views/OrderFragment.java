@@ -1,7 +1,9 @@
 package com.mybareskinph.theBareskinApp.home.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,16 +21,19 @@ import com.mybareskinph.theBareskinApp.home.pojos.StoreOrder;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.OrderView;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.SupplyView;
 import com.mybareskinph.theBareskinApp.util.Constants;
+import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 import com.mybareskinph.theBareskinApp.util.StoreComputationUtil;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class OrderFragment extends BaseFragment implements OrderView {
 
     @BindView(R.id.rv_supplies)
     RecyclerView orderList;
+
 
     ArrayList<StoreOrder> items;
     OrderPresenterImpl presenter;
@@ -60,5 +65,10 @@ public class OrderFragment extends BaseFragment implements OrderView {
         orderList.setAdapter(adapter);
 
         return view;
+    }
+
+    @OnClick(R.id.fab_add_order)
+    public void addOrder(View view) {
+        startActivity(new Intent(getContext(), NewOrderActivity.class));
     }
 }
