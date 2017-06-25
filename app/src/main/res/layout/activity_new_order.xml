@@ -9,34 +9,73 @@
     android:orientation="vertical"
     tools:openDrawer="start">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorAccent"
-        app:popupTheme="@style/AppTheme.PopupOverlay">
+        android:layout_height="100dp"
+        android:background="@color/darkBrown"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        app:elevation="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
+            android:layout_height="match_parent"
+            android:gravity="bottom">
 
-            <TextView
+            <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
                 android:id="@+id/toolbar_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="24dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="left"
                 android:text="@string/label_new_order"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
         </LinearLayout>
 
-    </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_new_order"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#E3E7EA">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="16dp"
+            app:srcCompat="@drawable/ic_left_24dp" />
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="16dp"
+            app:srcCompat="@drawable/ic_right_24dp" />
+
+        <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:textAllCaps="true"
+            android:textSize="12dp"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/iv_right"/>
+
+
+    </RelativeLayout>
 
 </LinearLayout>
