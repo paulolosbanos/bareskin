@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.mybareskinph.theBareskinApp.home.views.CustomerInfoFragment;
+import com.mybareskinph.theBareskinApp.home.views.ProductOrdersFragment;
 
 public class NewOrderPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -22,7 +23,7 @@ public class NewOrderPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new CustomerInfoFragment();
+                return new ProductOrdersFragment();
             case 1:
                 return new CustomerInfoFragment();
             case 2:

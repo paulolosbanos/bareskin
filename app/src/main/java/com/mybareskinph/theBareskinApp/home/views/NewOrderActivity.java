@@ -2,13 +2,11 @@ package com.mybareskinph.theBareskinApp.home.views;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.base.BaseActivity;
 import com.mybareskinph.theBareskinApp.home.adapters.NewOrderPagerAdapter;
@@ -32,6 +30,6 @@ public class NewOrderActivity extends BaseActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.darkerBrown));
         }
-        newOrderPager.setAdapter(new NewOrderPagerAdapter(getSupportFragmentManager(),this));
+        newOrderPager.setAdapter(new NewOrderPagerAdapter(getSupportFragmentManager(), this));
     }
 }
