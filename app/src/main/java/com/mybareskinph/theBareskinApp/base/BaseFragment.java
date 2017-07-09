@@ -6,12 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.mybareskinph.theBareskinApp.App;
 import com.mybareskinph.theBareskinApp.home.views.HomeActivity;
-
-import java.util.HashMap;
-
-import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

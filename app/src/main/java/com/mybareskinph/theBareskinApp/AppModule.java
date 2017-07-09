@@ -2,15 +2,12 @@ package com.mybareskinph.theBareskinApp;
 
 import android.app.Application;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import retrofit2.Retrofit;
 
 @Module
 public class AppModule {

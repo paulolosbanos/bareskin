@@ -16,7 +16,6 @@ import com.mybareskinph.theBareskinApp.home.implementations.HomePresenterImpl;
 import com.mybareskinph.theBareskinApp.home.pojos.LoginResponse;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomeView;
-import com.mybareskinph.theBareskinApp.home.viewInterfaces.SupplyView;
 import com.mybareskinph.theBareskinApp.util.Constants;
 import com.mybareskinph.theBareskinApp.util.Money;
 import com.mybareskinph.theBareskinApp.util.StoreComputationUtil;

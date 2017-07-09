@@ -3,7 +3,6 @@ package com.mybareskinph.theBareskinApp.home.views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,16 +12,10 @@ import android.view.ViewGroup;
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.base.BaseFragment;
 import com.mybareskinph.theBareskinApp.home.adapters.OrderAdapter;
-import com.mybareskinph.theBareskinApp.home.adapters.SupplyAdapter;
 import com.mybareskinph.theBareskinApp.home.implementations.OrderPresenterImpl;
-import com.mybareskinph.theBareskinApp.home.implementations.SupplyPresenterImpl;
-import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreOrder;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.OrderView;
-import com.mybareskinph.theBareskinApp.home.viewInterfaces.SupplyView;
 import com.mybareskinph.theBareskinApp.util.Constants;
-import com.mybareskinph.theBareskinApp.util.LoggerUtil;
-import com.mybareskinph.theBareskinApp.util.StoreComputationUtil;
 
 import java.util.ArrayList;
 
