@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fs="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:openDrawer="start">
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_login" />
+
+    <LinearLayout
+        android:id="@+id/ll_inputs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
+
+        <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Identification Key"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            fs:font="montserrat_regular" />
+
+        <EditText
+            android:id="@+id/tv_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:theme="@style/TextLabelWhite" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="4dp" />
+
+        <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            fs:font="montserrat_regular" />
+
+        <EditText
+            android:id="@+id/tv_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:theme="@style/TextLabelWhite" />
+
+    </LinearLayout>
+
+    <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+        android:id="@+id/tv_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ll_inputs"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="LOG IN"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        fs:font="montserrat_regular" />
+
+    <ImageView
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_above="@id/tv_login"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:background="@color/brightGreen"
+            android:text="login"
+            android:textAllCaps="true"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="12dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Sign up"
+                android:textColor="@color/white"
+                fs:font="montserrat_regular" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

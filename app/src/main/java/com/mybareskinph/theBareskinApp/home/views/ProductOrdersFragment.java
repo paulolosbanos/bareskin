@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -15,9 +16,11 @@ import com.mybareskinph.theBareskinApp.base.BaseFragment;
 import com.mybareskinph.theBareskinApp.home.adapters.ProductAdapter;
 import com.mybareskinph.theBareskinApp.home.implementations.HomePresenterImpl;
 import com.mybareskinph.theBareskinApp.home.implementations.ProductOrderPresenterImpl;
+import com.mybareskinph.theBareskinApp.home.implementations.RecyclerItemClickListener;
 import com.mybareskinph.theBareskinApp.home.pojos.Product;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.ProductOrderView;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.SupplyView;
+import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 
 import java.util.List;
 
@@ -59,7 +62,9 @@ public class ProductOrdersFragment extends BaseFragment implements ProductOrderV
     @Override
     public void fillRecyclerView(List<Product> productList) {
         ProductAdapter adapter = new ProductAdapter(getContext(), productList);
-
+        productView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), (view, position) -> {
+            LoggerUtil.log(position);
+        }));
         productView.setAdapter(adapter);
         productView.setLayoutManager(new GridLayoutManager(getContext(), 2));
     }

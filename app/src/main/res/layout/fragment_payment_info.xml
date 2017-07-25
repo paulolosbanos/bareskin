@@ -14,7 +14,6 @@
         android:layout_height="match_parent"
         android:background="#EEEEEE"
         android:orientation="vertical"
-        android:paddingBottom="16dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="22dp">
@@ -22,59 +21,39 @@
         <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:lineSpacingExtra="4dp"
-            android:text="Please make sure that the information on the input fields are correct"
+            android:text="Choose a payment date and payment method for your package"
             android:textColor="#6C6C6C"
-            android:textSize="18dp"
-            android:layout_marginBottom="32dp"/>
+            android:textSize="18dp" />
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/et_payment_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="#f8f8f8"
             android:digits="0123456789"
             android:focusable="false"
-            android:hint="Name"
+            android:hint="Payment Date"
             android:inputType="number|none"
             android:maxLines="1"
             android:paddingBottom="16dp"
             android:paddingLeft="24dp"
             android:paddingRight="16dp"
             android:paddingTop="16dp"
+            android:textColor="#818181"
+            android:textColorHint="#818181"
             android:textSize="14dp" />
 
-        <android.support.design.widget.TextInputEditText
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/ms_payment_method"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:digits="0123456789"
-            android:focusable="false"
-            android:hint="Address"
-            android:inputType="number|none"
-            android:maxLines="1"
-            android:paddingBottom="16dp"
-            android:paddingLeft="24dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
-            android:textSize="14dp" />
+            app:ms_arrow_tint="@color/brightGreen"
+            app:ms_background_color="#f8f8f8" />
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:digits="0123456789"
-            android:focusable="false"
-            android:hint="Mobile Number"
-            android:inputType="number|none"
-            android:maxLines="1"
-            android:paddingBottom="16dp"
-            android:paddingLeft="24dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
-            android:textSize="14dp" />
+
     </LinearLayout>
 
 

@@ -15,6 +15,7 @@ import com.mybareskinph.theBareskinApp.base.BaseFragment;
 import com.mybareskinph.theBareskinApp.home.implementations.HomePresenterImpl;
 import com.mybareskinph.theBareskinApp.home.pojos.LoginResponse;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
+import com.mybareskinph.theBareskinApp.home.pojos.UserCredential;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomeView;
 import com.mybareskinph.theBareskinApp.util.Constants;
 import com.mybareskinph.theBareskinApp.util.Money;
@@ -22,6 +23,8 @@ import com.mybareskinph.theBareskinApp.util.StoreComputationUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -75,7 +78,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_layout_home, container, false);
         bindView(this, view);
-        presenter = new HomePresenterImpl(this, getRetrofit());
+        presenter = new HomePresenterImpl(this, getGlobalObjects());
         details.setOnClickListener(view1 -> presenter.onDetailsClick());
         return view;
     }
@@ -83,8 +86,8 @@ public class HomeFragment extends BaseFragment implements HomeView {
     @Override
     public void onResume() {
         super.onResume();
+        getGlobalObjects();
         changeToolbarTitle("Home");
-        presenter.login();
     }
 
     @Override
@@ -93,10 +96,10 @@ public class HomeFragment extends BaseFragment implements HomeView {
     }
 
     @Override
-    public void showFutureEarning(LoginResponse loginResponse) {
+    public void showFutureEarning(ArrayList<StoreItem> items) {
         loadingFutureEarning.setVisibility(View.GONE);
         futureEarning.setVisibility(View.VISIBLE);
-        futureEarning.setText(Money.formatPrice(Money.PHILIPPINE_PESO, StoreComputationUtil.computeEarningTrajectory(loginResponse.getStoreInventory())));
+        futureEarning.setText(Money.formatPrice(Money.PHILIPPINE_PESO, StoreComputationUtil.computeEarningTrajectory(items)));
         salesHistory.setEnabled(true);
         sellNow.setEnabled(true);
     }
@@ -110,10 +113,10 @@ public class HomeFragment extends BaseFragment implements HomeView {
     }
 
     @Override
-    public void showSupplyWorth(LoginResponse loginResponse) {
+    public void showSupplyWorth(ArrayList<StoreItem> items) {
         loadingCurrentSupply.setVisibility(View.GONE);
         currentSupplyWorth.setVisibility(View.VISIBLE);
-        currentSupplyWorth.setText(Money.formatPrice(Money.PHILIPPINE_PESO, StoreComputationUtil.computeInventoryWorth(loginResponse.getStoreInventory())));
+        currentSupplyWorth.setText(Money.formatPrice(Money.PHILIPPINE_PESO, StoreComputationUtil.computeInventoryWorth(items)));
         details.setEnabled(true);
         orderNow.setEnabled(true);
     }
@@ -127,10 +130,10 @@ public class HomeFragment extends BaseFragment implements HomeView {
     }
 
     @Override
-    public void showInviteCode(LoginResponse loginResponse) {
+    public void showInviteCode(UserCredential credential) {
         loadingInvite.setVisibility(View.GONE);
         inviteCodeContainer.setVisibility(View.VISIBLE);
-        inviteCode.setText(loginResponse.getUserCredential().getUid());
+        inviteCode.setText(credential.getUid());
     }
 
     @Override
@@ -148,11 +151,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
                 .replace(R.id.fragment_container, fragment, fragment.getClass().getSimpleName())
                 .addToBackStack(fragment.getClass().getSimpleName())
                 .commit();
-    }
-
-    @Override
-    public HashMap<String, Object> getGlobalObjects() {
-        return ((BaseActivity) getActivity()).getGlobalObjects();
     }
 
 }

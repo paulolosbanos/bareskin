@@ -8,6 +8,10 @@ import android.view.View;
 
 import com.mybareskinph.theBareskinApp.home.views.HomeActivity;
 
+import java.util.HashMap;
+
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import retrofit2.Retrofit;
@@ -35,5 +39,9 @@ public class BaseFragment extends Fragment {
 
     public Retrofit getRetrofit() {
         return mActivity.mRetrofit;
+    }
+
+    public HashMap<String, Object> getGlobalObjects() {
+        return ((BaseActivity) getActivity()).getGlobalObjects();
     }
 }

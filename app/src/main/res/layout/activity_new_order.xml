@@ -38,7 +38,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
+    <com.mybareskinph.theBareskinApp.widgets.NonSwipeableViewPager
         android:id="@+id/vp_new_order"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -51,30 +51,41 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="16dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
             app:srcCompat="@drawable/ic_left_24dp" />
 
-        <ImageView
-            android:id="@+id/iv_right"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:layout_marginRight="16dp"
-            app:srcCompat="@drawable/ic_right_24dp" />
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="25dp">
 
-        <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            android:textAllCaps="true"
-            android:textSize="12dp"
-            android:layout_centerInParent="true"
-            android:layout_toLeftOf="@id/iv_right"/>
+            <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:textAllCaps="true"
+                android:textSize="12dp" />
 
+            <ImageView
+                android:id="@+id/iv_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_right_24dp" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

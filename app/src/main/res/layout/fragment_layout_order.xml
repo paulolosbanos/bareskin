@@ -27,7 +27,8 @@
                 android:tint="@color/brightGreen"
                 app:srcCompat="@drawable/ic_store_black_72dp" />
 
-            <TextView
+            <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                android:id="@+id/tv_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -35,7 +36,8 @@
                 android:textColor="@color/darkerBrown"
                 android:textSize="20dp" />
 
-            <TextView
+            <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                android:id="@+id/tv_subtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
