@@ -1,5 +1,6 @@
 package com.mybareskinph.theBareskinApp.home.implementations;
 
+import com.mybareskinph.theBareskinApp.home.pojos.OrderUnit;
 import com.mybareskinph.theBareskinApp.home.pojos.Product;
 import com.mybareskinph.theBareskinApp.home.services.MainService;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.ProductOrderPresenter;
@@ -19,6 +20,8 @@ public class ProductOrderPresenterImpl implements ProductOrderPresenter {
     private ProductOrderView mView;
     private Retrofit mRetrofit;
 
+    List<OrderUnit> orders;
+
     public ProductOrderPresenterImpl(ProductOrderView mView, Retrofit mRetrofit) {
         this.mView = mView;
         this.mRetrofit = mRetrofit;
@@ -35,4 +38,13 @@ public class ProductOrderPresenterImpl implements ProductOrderPresenter {
                     mView.fillRecyclerView(response.getProducts());
                 });
     }
+
+    @Override
+    public void updateOrder(OrderUnit unit) {
+        Observable.just(orders).subscribe(orderUnits -> {
+
+        });
+    }
+
+
 }

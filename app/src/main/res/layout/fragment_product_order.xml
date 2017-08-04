@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:paddingTop="22dp">
+        android:paddingTop="12dp">
 
         <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
             android:layout_width="match_parent"
@@ -27,9 +27,97 @@
             android:textColor="#6C6C6C"
             android:textSize="18dp" />
 
+        <HorizontalScrollView
+            android:layout_marginBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:background="@color/darkerGrey"
+                    android:padding="4dp"
+                    android:text="Included"
+                    android:textColor="@color/white" />
+
+                <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:background="@color/darkerGrey"
+                    android:padding="4dp"
+                    android:text="Soaps"
+                    android:textColor="@color/white" />
+
+                <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:background="@color/darkerGrey"
+                    android:padding="4dp"
+                    android:text="Toner"
+                    android:textColor="@color/white" />
+
+                <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:clickable="true"
+                    android:layout_marginRight="2dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:background="@color/darkerGrey"
+                    android:padding="4dp"
+                    android:text="Kits"
+                    android:textColor="@color/white" />
+
+                <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:background="@color/darkerGrey"
+                    android:padding="4dp"
+                    android:clickable="true"
+                    android:text="Premium"
+                    android:textColor="@color/white" />
+
+                <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:clickable="true"
+                    android:layout_marginRight="2dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:background="@color/darkerGrey"
+                    android:padding="4dp"
+                    android:text="Exotic"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
         <android.support.design.widget.TextInputLayout
             android:id="@+id/et_fullname"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:theme="@style/TextLabelGrey">
 
@@ -52,7 +140,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingBottom="20dp"
-            android:paddingTop="20dp"/>
+            android:paddingTop="20dp" />
 
     </LinearLayout>
 

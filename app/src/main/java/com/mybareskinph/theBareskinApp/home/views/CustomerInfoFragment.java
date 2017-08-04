@@ -10,7 +10,7 @@ import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.base.BaseFragment;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.SupplyView;
 
-public class CustomerInfoFragment extends BaseFragment implements SupplyView {
+public class CustomerInfoFragment extends BaseFragment {
 
     public CustomerInfoFragment() {
     }

@@ -17,7 +17,9 @@ import com.mybareskinph.theBareskinApp.home.adapters.ProductAdapter;
 import com.mybareskinph.theBareskinApp.home.implementations.HomePresenterImpl;
 import com.mybareskinph.theBareskinApp.home.implementations.ProductOrderPresenterImpl;
 import com.mybareskinph.theBareskinApp.home.implementations.RecyclerItemClickListener;
+import com.mybareskinph.theBareskinApp.home.pojos.OrderUnit;
 import com.mybareskinph.theBareskinApp.home.pojos.Product;
+import com.mybareskinph.theBareskinApp.home.viewInterfaces.ProductOnClickListener;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.ProductOrderView;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.SupplyView;
 import com.mybareskinph.theBareskinApp.util.LoggerUtil;
@@ -25,6 +27,9 @@ import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 import java.util.List;
 
 import butterknife.BindView;
+import rx.Observable;
+import rx.Subscriber;
+import rx.subjects.PublishSubject;
 
 public class ProductOrdersFragment extends BaseFragment implements ProductOrderView {
 
@@ -36,6 +41,8 @@ public class ProductOrdersFragment extends BaseFragment implements ProductOrderV
 
     String[] autoCompleteString = {"#0012 - Luminous Whitening Soap"};
     ProductOrderPresenterImpl presenter;
+
+    private final PublishSubject<OrderUnit> stateSubject = PublishSubject.create();
 
     public ProductOrdersFragment() {
     }
@@ -51,6 +58,11 @@ public class ProductOrdersFragment extends BaseFragment implements ProductOrderV
         View view = inflater.inflate(R.layout.fragment_product_order, container, false);
         bindView(this, view);
 
+        stateSubject
+                .asObservable()
+                .compose(bind())
+                .subscribe(orderUnit -> presenter.updateOrder(orderUnit));
+
         presenter = new ProductOrderPresenterImpl(this, getRetrofit());
         presenter.loadProducts();
 
@@ -61,10 +73,7 @@ public class ProductOrdersFragment extends BaseFragment implements ProductOrderV
 
     @Override
     public void fillRecyclerView(List<Product> productList) {
-        ProductAdapter adapter = new ProductAdapter(getContext(), productList);
-        productView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), (view, position) -> {
-            LoggerUtil.log(position);
-        }));
+        ProductAdapter adapter = new ProductAdapter(getContext(), productList, stateSubject);
         productView.setAdapter(adapter);
         productView.setLayoutManager(new GridLayoutManager(getContext(), 2));
     }

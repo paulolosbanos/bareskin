@@ -50,6 +50,7 @@
         android:background="#E3E7EA">
 
         <ImageView
+            android:id="@+id/ll_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
@@ -61,6 +62,7 @@
             app:srcCompat="@drawable/ic_left_24dp" />
 
         <LinearLayout
+            android:id="@+id/ll_next"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"

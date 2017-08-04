@@ -15,6 +15,8 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import retrofit2.Retrofit;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
 
 public class BaseFragment extends Fragment {
 
@@ -43,5 +45,12 @@ public class BaseFragment extends Fragment {
 
     public HashMap<String, Object> getGlobalObjects() {
         return ((BaseActivity) getActivity()).getGlobalObjects();
+    }
+
+    @NonNull
+    public final <T> Observable.Transformer<T, T> bind() {
+        return observable -> observable
+                .compose(mActivity.bindToLifecycle())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }
