@@ -8,6 +8,9 @@ public class UserCredential {
     @SerializedName("username")
     @Expose
     private String username;
+    @SerializedName("fullname")
+    @Expose
+    private String fullname;
     @SerializedName("email")
     @Expose
     private String email;
@@ -17,6 +20,10 @@ public class UserCredential {
     @SerializedName("uid")
     @Expose
     private String uid;
+
+    @SerializedName("invite-code")
+    @Expose
+    private String inviteCode;
 
     public String getUsername() {
         return username;
@@ -50,4 +57,15 @@ public class UserCredential {
         this.uid = uid;
     }
 
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getInviteCode() {
+        return inviteCode;
+    }
 }

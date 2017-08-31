@@ -21,10 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:paddingTop="16dp"
         android:paddingBottom="16dp"
         android:paddingLeft="32dp"
-        android:paddingRight="32dp">
+        android:paddingRight="32dp"
+        android:paddingTop="16dp">
 
         <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
             android:layout_width="match_parent"
@@ -80,11 +80,11 @@
         fs:font="montserrat_regular" />
 
     <ImageView
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"
-        android:layout_above="@id/tv_login"/>
+        android:layout_above="@id/tv_login"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,22 +93,45 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <Button
+        <RelativeLayout
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:foreground="?attr/selectableItemBackground"
             android:background="@color/brightGreen"
-            android:text="login"
-            android:textAllCaps="true"
-            android:textColor="@color/white" />
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingBottom="12dp"
+            android:paddingTop="12dp">
+
+            <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                android:id="@+id/tv_login_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="login"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+
+            <ProgressBar
+                android:id="@+id/pb_loading"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="left"
+                android:indeterminate="true"
+                android:indeterminateDrawable="@drawable/pb_solid_white_bg"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:padding="12dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="12dp">
 
             <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
                 android:layout_width="match_parent"

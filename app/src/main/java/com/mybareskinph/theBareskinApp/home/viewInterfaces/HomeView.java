@@ -22,4 +22,6 @@ public interface HomeView {
     void hideInviteCode();
 
     void goToSuppliesPage();
+
+    void goToRegisterSalesPage();
 }

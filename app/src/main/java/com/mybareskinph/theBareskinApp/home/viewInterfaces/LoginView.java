@@ -9,4 +9,5 @@ import java.util.HashMap;
 public interface LoginView {
     void showHome();
     HashMap<String, Object> getGlobalObjects();
+    void loginLoading();
 }

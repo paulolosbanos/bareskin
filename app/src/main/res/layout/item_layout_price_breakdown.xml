@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@null"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:text="Luminous Whitening Soap ( × 2 )"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tv_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:text="P 240.00"
+        android:textColor="@color/azure"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+</LinearLayout>

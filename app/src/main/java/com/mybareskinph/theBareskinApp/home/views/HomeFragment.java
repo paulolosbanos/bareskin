@@ -1,5 +1,6 @@
 package com.mybareskinph.theBareskinApp.home.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding.view.RxView;
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.base.BaseActivity;
 import com.mybareskinph.theBareskinApp.base.BaseFragment;
@@ -80,6 +82,9 @@ public class HomeFragment extends BaseFragment implements HomeView {
         bindView(this, view);
         presenter = new HomePresenterImpl(this, getGlobalObjects());
         details.setOnClickListener(view1 -> presenter.onDetailsClick());
+
+        RxView.clicks(orderNow).subscribe(aVoid -> startActivity(new Intent(getContext(), NewOrderActivity.class)));
+        RxView.clicks(sellNow).subscribe(aVoid -> presenter.onRegisterSalesClick());
         return view;
     }
 
@@ -133,7 +138,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     public void showInviteCode(UserCredential credential) {
         loadingInvite.setVisibility(View.GONE);
         inviteCodeContainer.setVisibility(View.VISIBLE);
-        inviteCode.setText(credential.getUid());
+        inviteCode.setText(credential.getInviteCode());
     }
 
     @Override
@@ -153,4 +158,12 @@ public class HomeFragment extends BaseFragment implements HomeView {
                 .commit();
     }
 
+    @Override
+    public void goToRegisterSalesPage() {
+        PaymentInfoFragment fragment = PaymentInfoFragment.newInstance();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment, fragment.getClass().getSimpleName())
+                .addToBackStack(fragment.getClass().getSimpleName())
+                .commit();
+    }
 }

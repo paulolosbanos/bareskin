@@ -2,4 +2,9 @@
     <declare-styleable name="FontSelector">
         <attr name="font" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="VerticalDashedLine">
+        <attr name="color" format="color" />
+        <attr name="isHorizontal" format="boolean" />
+    </declare-styleable>
 </resources>

@@ -7,4 +7,5 @@ import java.util.ArrayList;
 
 public interface HomePresenter {
     void onDetailsClick();
+    void onRegisterSalesClick();
 }

@@ -22,51 +22,52 @@
         <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
             android:lineSpacingExtra="4dp"
             android:text="Please make sure that the information on the input fields are correct"
             android:textColor="#6C6C6C"
-            android:textSize="18dp"
-            android:layout_marginBottom="32dp"/>
+            android:textSize="18dp" />
 
-        <android.support.design.widget.TextInputEditText
+        <EditText
+            android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
-            android:digits="0123456789"
-            android:focusable="false"
             android:hint="Name"
-            android:inputType="number|none"
             android:maxLines="1"
             android:paddingBottom="16dp"
             android:paddingLeft="24dp"
             android:paddingRight="16dp"
             android:paddingTop="16dp"
+            android:textColor="@color/lightGrey"
             android:textSize="14dp" />
 
-        <android.support.design.widget.TextInputEditText
+        <EditText
+            android:id="@+id/et_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
-            android:digits="0123456789"
-            android:focusable="false"
             android:hint="Address"
-            android:inputType="number|none"
             android:maxLines="1"
             android:paddingBottom="16dp"
             android:paddingLeft="24dp"
             android:paddingRight="16dp"
             android:paddingTop="16dp"
-            android:textSize="14dp" />
+            android:textColor="@color/lightGrey"
+            android:textSize="14dp">
 
-        <android.support.design.widget.TextInputEditText
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/et_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
             android:digits="0123456789"
-            android:focusable="false"
             android:hint="Mobile Number"
             android:inputType="number|none"
             android:maxLines="1"
@@ -74,6 +75,7 @@
             android:paddingLeft="24dp"
             android:paddingRight="16dp"
             android:paddingTop="16dp"
+            android:textColor="@color/lightGrey"
             android:textSize="14dp" />
     </LinearLayout>
 

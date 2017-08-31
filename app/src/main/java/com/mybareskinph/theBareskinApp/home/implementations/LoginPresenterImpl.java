@@ -49,6 +49,12 @@ public class LoginPresenterImpl implements LoginPresenter {
                     }
 
                     @Override
+                    public void onStart() {
+                        super.onStart();
+                        mView.loginLoading();
+                    }
+
+                    @Override
                     public void onError(Throwable e) {
                         if (e instanceof HttpException) {
                             LoggerUtil.log(((HttpException) e).code());

@@ -50,7 +50,7 @@
         android:background="#E3E7EA">
 
         <ImageView
-            android:id="@+id/ll_back"
+            android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
@@ -75,6 +75,7 @@
             android:paddingRight="25dp">
 
             <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+                android:id="@+id/tv_fwd_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Next"
@@ -86,6 +87,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_right_24dp" />
+
+            <ImageView
+                android:id="@+id/iv_right_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:paddingLeft="15dp"
+                app:srcCompat="@drawable/ic_check_24dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:visibility="gone"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="25dp">
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:indeterminateDrawable="@drawable/pb_black_bg" />
 
         </LinearLayout>
 

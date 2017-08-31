@@ -14,9 +14,9 @@
     <string name="label_future_earning_2">based on your current supply stocks</string>
     <string name="label_supply_worth_1">Your supplies are worth</string>
     <string name="label_button_sales_history">sales history</string>
-    <string name="label_button_sell_now">sell now</string>
+    <string name="label_button_sell_now">register sale</string>
     <string name="label_button_details">details</string>
-    <string name="label_button_order_now">order now</string>
+    <string name="label_button_order_now">restock</string>
 
     <string name="label_greet_user">Hi %s!</string>
     <string name="label_x_report_date">These are your %1$s as of %2$s</string>

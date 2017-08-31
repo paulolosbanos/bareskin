@@ -36,4 +36,9 @@ public class HomePresenterImpl implements HomePresenter {
     public void onDetailsClick() {
         mView.goToSuppliesPage();
     }
+
+    @Override
+    public void onRegisterSalesClick() {
+        mView.goToRegisterSalesPage();
+    }
 }

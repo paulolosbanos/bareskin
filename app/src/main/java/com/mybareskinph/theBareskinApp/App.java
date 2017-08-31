@@ -7,7 +7,7 @@ import retrofit2.Retrofit;
 public class App extends Application {
 
     public Retrofit retrofit;
-    //public static final String BASE_URL = "http://172.20.10.3:8087";
+    //public static final String BASE_URL = "http://172.20.10.6:8087";
     public static final String BASE_URL = "http://192.168.0.101:8087";
     private NetComponent mNetComponent;
 

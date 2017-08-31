@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.jakewharton.rxbinding.widget.RxTextView;
@@ -26,13 +30,19 @@ public class LoginActivity extends BaseActivity implements LoginView {
     ImageView background;
 
     @BindView(R.id.btn_login)
-    Button login;
+    RelativeLayout login;
 
     @BindView(R.id.tv_id)
     EditText id;
 
     @BindView(R.id.tv_password)
     EditText pass;
+
+    @BindView(R.id.pb_loading)
+    ProgressBar loading;
+
+    @BindView(R.id.tv_login_label)
+    TextView loginLabel;
 
     LoginPresenterImpl presenter;
 
@@ -61,7 +71,14 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
+    public void loginLoading() {
+        loading.setVisibility(View.VISIBLE);
+        loginLabel.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
     public void showHome() {
         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+        finish();
     }
 }

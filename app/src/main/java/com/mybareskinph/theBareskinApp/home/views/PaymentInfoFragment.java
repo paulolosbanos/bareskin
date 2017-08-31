@@ -18,6 +18,7 @@ import com.mybareskinph.theBareskinApp.base.BaseFragment;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.PaymentInfoView;
 import com.mybareskinph.theBareskinApp.util.CalendarDate;
 import com.mybareskinph.theBareskinApp.util.DatePickerFragment;
+import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -26,12 +27,15 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
+import rx.Observable;
+import rx.subjects.PublishSubject;
+import rx.subjects.Subject;
 
 /**
  * Created by paulolosbanos on 7/9/17.
  */
 
-public class PaymentInfoFragment extends BaseFragment implements PaymentInfoView, DatePickerFragment.DatePickerFragmentListener {
+public class PaymentInfoFragment extends FormFragments implements PaymentInfoView, DatePickerFragment.DatePickerFragmentListener {
 
     @BindView(R.id.ms_payment_method)
     MaterialSpinner paymentMethod;
@@ -40,6 +44,7 @@ public class PaymentInfoFragment extends BaseFragment implements PaymentInfoView
     TextInputEditText paymentDate;
 
     private static final CalendarDate DEFAULT_INITIAL_JOURNEY_DATE;
+    private final PublishSubject<String> paymentInfoWatcher = PublishSubject.create();
 
     static {
         Calendar c = Calendar.getInstance();
@@ -62,15 +67,23 @@ public class PaymentInfoFragment extends BaseFragment implements PaymentInfoView
         bindView(this, view);
         paymentMethod.setItems("BDO", "DragonPay");
 
-        paymentDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                journeyDatePicker("try", new CalendarDate(2017, 6, 10));
-
-            }
+        paymentMethod.setOnItemSelectedListener((view1, position, id, item) -> {
+            checkIfAnswered();
+        });
+        paymentDate.setOnClickListener(v -> {
+            journeyDatePicker("try", new CalendarDate(2017, 6, 10));
         });
         return view;
+    }
+
+    private void checkIfAnswered() {
+        if (paymentMethod.getText().length() != 0 && !paymentDate.getText().equals("Payment Date")) {
+            paymentInfoWatcher.onNext(paymentMethod.getText().toString() + ":" + paymentDate.getText().toString());
+        }
+    }
+
+    public Observable<String> paymentInformation() {
+        return paymentInfoWatcher;
     }
 
     private void journeyDatePicker(String name, CalendarDate date) {
@@ -81,11 +94,11 @@ public class PaymentInfoFragment extends BaseFragment implements PaymentInfoView
         DatePickerFragment datePickerFragment = DatePickerFragment.newInstance(name, date != null ? date : DEFAULT_INITIAL_JOURNEY_DATE);
         datePickerFragment.setListener(this);
         datePickerFragment.show(fragmentManager);
-        //ActivityUtils.hideKeyboard(this);
     }
 
     @Override
     public void dateSelected(String name, int year, int monthOfYear, int dayOfMonth) {
         paymentDate.setText(monthOfYear + "-" + dayOfMonth + "-" + year);
+        checkIfAnswered();
     }
 }

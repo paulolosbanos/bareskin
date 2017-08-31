@@ -1,10 +1,13 @@
 package com.mybareskinph.theBareskinApp.base;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.mybareskinph.theBareskinApp.App;
+import com.mybareskinph.theBareskinApp.home.pojos.UserCredential;
+import com.mybareskinph.theBareskinApp.util.Constants;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.util.HashMap;
@@ -12,6 +15,8 @@ import java.util.HashMap;
 import javax.inject.Inject;
 
 import retrofit2.Retrofit;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
 
 public class BaseActivity extends RxAppCompatActivity {
 
@@ -38,8 +43,19 @@ public class BaseActivity extends RxAppCompatActivity {
         return globalObjects;
     }
 
+    public UserCredential getUserCredentials() {
+        return (UserCredential) getGlobalObjects().get(Constants.USER_INFO);
+    }
+
     public App getmAppInstance() {
         return mAppInstance;
+    }
+
+    @NonNull
+    public final <T> Observable.Transformer<T, T> bind() {
+        return observable -> observable
+                .compose(bindToLifecycle())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
 }

@@ -6,7 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.mybareskinph.theBareskinApp.home.pojos.UserCredential;
 import com.mybareskinph.theBareskinApp.home.views.HomeActivity;
+import com.mybareskinph.theBareskinApp.util.Constants;
 
 import java.util.HashMap;
 
@@ -45,6 +47,10 @@ public class BaseFragment extends Fragment {
 
     public HashMap<String, Object> getGlobalObjects() {
         return ((BaseActivity) getActivity()).getGlobalObjects();
+    }
+
+    public UserCredential getUserCredentials() {
+        return (UserCredential) ((BaseActivity) getActivity()).getGlobalObjects().get(Constants.USER_INFO);
     }
 
     @NonNull

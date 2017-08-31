@@ -9,6 +9,11 @@ import java.util.ArrayList;
 public class GetProductsResponse {
     String status;
     ArrayList<Product> products;
+    ArrayList<String> tags;
+
+    public ArrayList<String> getTags() {
+        return tags;
+    }
 
     public String getStatus() {
         return status;
