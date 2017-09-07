@@ -1,6 +1,5 @@
 package com.mybareskinph.theBareskinApp.home.viewInterfaces;
 
-import com.mybareskinph.theBareskinApp.home.pojos.LoginRequest;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreOrder;
 import com.mybareskinph.theBareskinApp.home.pojos.UserCredential;

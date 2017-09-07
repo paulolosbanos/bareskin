@@ -9,11 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mybareskinph.theBareskinApp.R;
-import com.mybareskinph.theBareskinApp.base.BaseFragment;
 import com.mybareskinph.theBareskinApp.home.adapters.PriceBreakdownAdapter;
 import com.mybareskinph.theBareskinApp.home.implementations.OrderPlacementSuccessPresenterImpl;
 import com.mybareskinph.theBareskinApp.home.pojos.NewOrderResponse;
-import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 
 import butterknife.BindView;
 import rx.subjects.PublishSubject;

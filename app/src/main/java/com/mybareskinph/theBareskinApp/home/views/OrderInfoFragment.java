@@ -2,8 +2,6 @@ package com.mybareskinph.theBareskinApp.home.views;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,20 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mybareskinph.theBareskinApp.R;
-import com.mybareskinph.theBareskinApp.base.BaseFragment;
 import com.mybareskinph.theBareskinApp.home.adapters.PriceBreakdownAdapter;
 import com.mybareskinph.theBareskinApp.home.implementations.OrderInfoPresenterImpl;
 import com.mybareskinph.theBareskinApp.home.pojos.OrderRequest;
-import com.mybareskinph.theBareskinApp.home.viewInterfaces.OrderInfoPresenter;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.OrderInfoView;
-import com.mybareskinph.theBareskinApp.home.viewInterfaces.PaymentInfoView;
-import com.mybareskinph.theBareskinApp.util.CalendarDate;
-import com.mybareskinph.theBareskinApp.util.DatePickerFragment;
-import com.mybareskinph.theBareskinApp.util.LoggerUtil;
-
-import java.util.Calendar;
 
 import butterknife.BindView;
 import rx.subjects.PublishSubject;

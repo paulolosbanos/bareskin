@@ -2,8 +2,6 @@ package com.mybareskinph.theBareskinApp;
 
 import android.app.Application;
 
-import com.mybareskinph.theBareskinApp.home.pojos.UserCredential;
-
 import java.util.HashMap;
 
 import javax.inject.Singleton;

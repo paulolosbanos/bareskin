@@ -1,4 +1,4 @@
-package com.mybareskinph.theBareskinApp.home.views;
+package com.mybareskinph.theBareskinApp.sale.views;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -14,20 +14,23 @@ import android.widget.TextView;
 import com.jakewharton.rxbinding.support.v4.view.RxViewPager;
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.base.BaseActivity;
-import com.mybareskinph.theBareskinApp.home.adapters.NewOrderPagerAdapter;
-import com.mybareskinph.theBareskinApp.home.implementations.NewOrderPresenterImpl;
-import com.mybareskinph.theBareskinApp.home.pojos.NewOrderResponse;
-import com.mybareskinph.theBareskinApp.home.viewInterfaces.NewOrderView;
+import com.mybareskinph.theBareskinApp.sale.adapter.RegisterSaleAdapter;
+import com.mybareskinph.theBareskinApp.sale.implementations.RegisterSaleImpl;
+import com.mybareskinph.theBareskinApp.sale.viewinterfaces.RegisterSaleView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.subjects.PublishSubject;
 
-public class NewOrderActivity extends BaseActivity implements NewOrderView {
+/**
+ * Created by paulolosbanos on 8/31/17.
+ */
+
+public class RegisterSaleActivity extends BaseActivity implements RegisterSaleView {
 
     @BindView(R.id.vp_new_order)
-    ViewPager newOrderPager;
+    ViewPager registerSalePager;
 
     @BindView(R.id.iv_back)
     ImageView back;
@@ -47,15 +50,14 @@ public class NewOrderActivity extends BaseActivity implements NewOrderView {
     @BindView(R.id.iv_right)
     ImageView right;
 
-    NewOrderPresenterImpl presenter;
-
+    RegisterSaleAdapter adapter;
     PublishSubject<Object> answerWatcher = PublishSubject.create();
-    NewOrderPagerAdapter adapter;
+    RegisterSaleImpl presenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_order);
+        setContentView(R.layout.activity_register_sale);
         ButterKnife.bind(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -63,17 +65,15 @@ public class NewOrderActivity extends BaseActivity implements NewOrderView {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.darkerBrown));
         }
+        adapter = new RegisterSaleAdapter(getSupportFragmentManager(), answerWatcher);
+        registerSalePager.setAdapter(adapter);
+        presenter = new RegisterSaleImpl(this, getRetrofit());
 
-        presenter = new NewOrderPresenterImpl(this, getRetrofit(), getUserCredentials());
-
-        adapter = new NewOrderPagerAdapter(getSupportFragmentManager(), answerWatcher);
-        newOrderPager.setAdapter(adapter);
-
-        enableNextButton(false);
         enableBackButton(false);
+        enableNextButton(false);
 
         RxViewPager
-                .pageSelections(newOrderPager)
+                .pageSelections(registerSalePager)
                 .map(pos -> (adapter.getRegisteredFragment(pos)))
                 .filter(formFragments -> formFragments != null)
                 .subscribe(currentFragment -> {
@@ -83,21 +83,21 @@ public class NewOrderActivity extends BaseActivity implements NewOrderView {
 
         answerWatcher
                 .asObservable()
-                .subscribe(payload -> presenter.updateNavigationButtons(presenter.saveOrderInfo(newOrderPager.getCurrentItem(), payload)));
+                .subscribe(payload -> presenter.updateNavigationButtons(presenter.saveRequestInfo(registerSalePager.getCurrentItem(), payload)));
     }
 
     @OnClick(R.id.ll_next)
     public void next(View view) {
-        if (newOrderPager.getCurrentItem() == 3) {
-            presenter.submitOrder();
+        if (registerSalePager.getCurrentItem() == 2) {
+            presenter.submitSale();
         } else {
-            newOrderPager.setCurrentItem(newOrderPager.getCurrentItem() + 1);
+            registerSalePager.setCurrentItem(registerSalePager.getCurrentItem() + 1);
         }
     }
 
     @OnClick(R.id.iv_back)
     public void back(View view) {
-        newOrderPager.setCurrentItem(newOrderPager.getCurrentItem() - 1);
+        registerSalePager.setCurrentItem(registerSalePager.getCurrentItem() - 1);
     }
 
     @OnClick(R.id.iv_right_done)
@@ -107,8 +107,8 @@ public class NewOrderActivity extends BaseActivity implements NewOrderView {
 
     @Override
     public void enableBackButton(boolean condition) {
-        back.setEnabled(newOrderPager.getCurrentItem() > 0 || condition);
-        back.setClickable(newOrderPager.getCurrentItem() > 0 || condition);
+        back.setEnabled(registerSalePager.getCurrentItem() > 0 || condition);
+        back.setClickable(registerSalePager.getCurrentItem() > 0 || condition);
     }
 
     @Override
@@ -124,16 +124,15 @@ public class NewOrderActivity extends BaseActivity implements NewOrderView {
     }
 
     @Override
-    public void orderPlacementSuccess(NewOrderResponse response) {
-        ((OrderPlacementSuccessFragment) adapter.getRegisteredFragment(adapter.getCount() - 1)).responseSubject.onNext(response);
-        newOrderPager.setCurrentItem(adapter.getCount() - 1);
-    }
-
-    @Override
     public void setFinalButton() {
         forwardButton.setVisibility(View.GONE);
         rightDone.setVisibility(View.VISIBLE);
         right.setVisibility(View.GONE);
         back.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onSuccess() {
+        registerSalePager.setCurrentItem(adapter.getCount() - 1);
     }
 }

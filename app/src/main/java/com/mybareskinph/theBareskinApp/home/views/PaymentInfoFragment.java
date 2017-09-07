@@ -1,6 +1,5 @@
 package com.mybareskinph.theBareskinApp.home.views;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -8,28 +7,18 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
-import android.widget.ListAdapter;
 
 import com.jaredrummler.materialspinner.MaterialSpinner;
-import com.jaredrummler.materialspinner.MaterialSpinnerAdapter;
 import com.mybareskinph.theBareskinApp.R;
-import com.mybareskinph.theBareskinApp.base.BaseFragment;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.PaymentInfoView;
 import com.mybareskinph.theBareskinApp.util.CalendarDate;
 import com.mybareskinph.theBareskinApp.util.DatePickerFragment;
-import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 
-import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 import butterknife.BindView;
 import rx.Observable;
 import rx.subjects.PublishSubject;
-import rx.subjects.Subject;
 
 /**
  * Created by paulolosbanos on 7/9/17.
@@ -98,7 +87,7 @@ public class PaymentInfoFragment extends FormFragments implements PaymentInfoVie
 
     @Override
     public void dateSelected(String name, int year, int monthOfYear, int dayOfMonth) {
-        paymentDate.setText(monthOfYear + "-" + dayOfMonth + "-" + year);
+        paymentDate.setText((monthOfYear+1) + "-" + dayOfMonth + "-" + year);
         checkIfAnswered();
     }
 }

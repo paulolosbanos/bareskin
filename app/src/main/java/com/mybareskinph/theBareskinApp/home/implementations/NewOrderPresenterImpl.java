@@ -1,8 +1,5 @@
 package com.mybareskinph.theBareskinApp.home.implementations;
 
-import android.util.Log;
-
-import com.mybareskinph.theBareskinApp.home.pojos.NewOrderResponse;
 import com.mybareskinph.theBareskinApp.home.pojos.OrderRequest;
 import com.mybareskinph.theBareskinApp.home.pojos.OrderUnit;
 import com.mybareskinph.theBareskinApp.home.pojos.UserCredential;
@@ -11,10 +8,8 @@ import com.mybareskinph.theBareskinApp.home.viewInterfaces.NewOrderPresenter;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.NewOrderView;
 import com.mybareskinph.theBareskinApp.home.views.FormFragments;
 import com.mybareskinph.theBareskinApp.home.views.OrderInfoFragment;
-import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Retrofit;
 import rx.android.schedulers.AndroidSchedulers;

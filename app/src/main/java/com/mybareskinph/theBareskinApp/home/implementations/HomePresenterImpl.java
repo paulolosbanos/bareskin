@@ -1,23 +1,16 @@
 package com.mybareskinph.theBareskinApp.home.implementations;
 
-import com.mybareskinph.theBareskinApp.home.pojos.LoginRequest;
-import com.mybareskinph.theBareskinApp.home.pojos.LoginResponse;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
-import com.mybareskinph.theBareskinApp.home.pojos.StoreOrder;
 import com.mybareskinph.theBareskinApp.home.pojos.UserCredential;
-import com.mybareskinph.theBareskinApp.home.services.MainService;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomePresenter;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomeView;
 import com.mybareskinph.theBareskinApp.util.Constants;
-import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.HttpException;
-import rx.Subscriber;
+import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -34,7 +27,12 @@ public class HomePresenterImpl implements HomePresenter {
 
     @Override
     public void onDetailsClick() {
-        mView.goToSuppliesPage();
+        Observable.just(null)
+                .delay(500, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(avoid -> mView.goToSuppliesPage());
+
     }
 
     @Override

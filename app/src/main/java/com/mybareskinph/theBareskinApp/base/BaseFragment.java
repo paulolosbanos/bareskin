@@ -12,8 +12,6 @@ import com.mybareskinph.theBareskinApp.util.Constants;
 
 import java.util.HashMap;
 
-import javax.inject.Inject;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import retrofit2.Retrofit;

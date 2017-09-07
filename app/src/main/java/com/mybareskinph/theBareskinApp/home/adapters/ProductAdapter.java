@@ -15,6 +15,7 @@ import com.jakewharton.rxbinding.view.RxView;
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.home.pojos.OrderUnit;
 import com.mybareskinph.theBareskinApp.home.pojos.Product;
+import com.mybareskinph.theBareskinApp.home.views.ProductOrdersFragment;
 import com.mybareskinph.theBareskinApp.util.Constants;
 import com.mybareskinph.theBareskinApp.util.Money;
 import com.squareup.picasso.Callback;
@@ -35,12 +36,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private final LayoutInflater inflater;
     private Context mContext;
     private final PublishSubject<OrderUnit> stateSubject;
+    private int mode;
 
-    public ProductAdapter(Context context, List<Product> items, PublishSubject<OrderUnit> stateSubject) {
+    public ProductAdapter(Context context, List<Product> items, PublishSubject<OrderUnit> stateSubject, int mode) {
         List<OrderUnit> orderList = getConvertedItems(items);
         this.productList = orderList;
         this.allProducts = new ArrayList<>(orderList);
         this.stateSubject = stateSubject;
+        this.mode = mode;
         inflater = LayoutInflater.from(context);
         mContext = context;
     }
@@ -116,7 +119,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         OrderUnit unit = productList.get(i);
         Product product = productList.get(i).getProduct();
         viewHolder.name.setText(product.getProductName());
-        viewHolder.price.setText(Money.formatPrice(Money.PHILIPPINE_PESO, product.getProductCostUnit()));
+        if(mode == ProductOrdersFragment.NEW_ORDER_MODE) {
+            viewHolder.price.setText(Money.formatPrice(Money.PHILIPPINE_PESO, product.getProductCostUnit()));
+        } else {
+            viewHolder.price.setText(Money.formatPrice(Money.PHILIPPINE_PESO, product.getProductSrpUnit()));
+        }
 
         RxView.clicks(viewHolder.itemArea).subscribe(aVoid -> {
             //increaseItemCount(viewHolder.viewCount, viewHolder);

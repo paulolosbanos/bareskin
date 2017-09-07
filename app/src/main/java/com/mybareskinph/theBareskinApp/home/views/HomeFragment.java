@@ -12,21 +12,17 @@ import android.widget.TextView;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.mybareskinph.theBareskinApp.R;
-import com.mybareskinph.theBareskinApp.base.BaseActivity;
 import com.mybareskinph.theBareskinApp.base.BaseFragment;
 import com.mybareskinph.theBareskinApp.home.implementations.HomePresenterImpl;
-import com.mybareskinph.theBareskinApp.home.pojos.LoginResponse;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
 import com.mybareskinph.theBareskinApp.home.pojos.UserCredential;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomeView;
+import com.mybareskinph.theBareskinApp.sale.views.RegisterSaleActivity;
 import com.mybareskinph.theBareskinApp.util.Constants;
 import com.mybareskinph.theBareskinApp.util.Money;
 import com.mybareskinph.theBareskinApp.util.StoreComputationUtil;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -160,10 +156,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
     @Override
     public void goToRegisterSalesPage() {
-        PaymentInfoFragment fragment = PaymentInfoFragment.newInstance();
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragment, fragment.getClass().getSimpleName())
-                .addToBackStack(fragment.getClass().getSimpleName())
-                .commit();
+        startActivity(new Intent(getContext(), RegisterSaleActivity.class));
     }
 }

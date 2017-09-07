@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.mybareskinph.theBareskinApp.R;
 import com.mybareskinph.theBareskinApp.home.adapters.ProductAdapter;
@@ -23,9 +24,15 @@ import java.util.List;
 import butterknife.BindView;
 import rx.Observable;
 import rx.subjects.PublishSubject;
-import rx.subjects.Subject;
 
 public class ProductOrdersFragment extends FormFragments implements ProductOrderView {
+
+    public static final int NEW_ORDER_MODE = 0;
+    public static final int REGISTER_SALE_MODE = 1;
+    public static final String MODE = "mode";
+
+    @BindView(R.id.tv_page_subtext)
+    TextView subtext;
 
     @BindView(R.id.et_product_name)
     AutoCompleteTextView productName;
@@ -55,8 +62,12 @@ public class ProductOrdersFragment extends FormFragments implements ProductOrder
     }
 
 
-    public static ProductOrdersFragment newInstance() {
+    public static ProductOrdersFragment newInstance(int mode) {
         ProductOrdersFragment fragment = new ProductOrdersFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(MODE, mode);
+        fragment.setArguments(bundle);
+
         return fragment;
     }
 
@@ -65,6 +76,12 @@ public class ProductOrdersFragment extends FormFragments implements ProductOrder
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product_order, container, false);
         bindView(this, view);
+
+        int mode = getArguments().getInt(MODE);
+
+        if(mode == ProductOrdersFragment.REGISTER_SALE_MODE) {
+            subtext.setText("Choose the products bought by the buyer");
+        }
 
         tagsSubject
                 .asObservable()
@@ -109,7 +126,8 @@ public class ProductOrdersFragment extends FormFragments implements ProductOrder
 
     @Override
     public void fillRecyclerView(List<Product> productList) {
-        adapter = new ProductAdapter(getContext(), productList, itemsSubject);
+        int mode = getArguments().getInt(MODE);
+        adapter = new ProductAdapter(getContext(), productList, itemsSubject, mode);
         productView.setAdapter(adapter);
         productView.setLayoutManager(new GridLayoutManager(getContext(), 2));
     }

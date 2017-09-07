@@ -6,13 +6,11 @@ import com.mybareskinph.theBareskinApp.home.services.MainService;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.ProductOrderPresenter;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.ProductOrderView;
 import com.mybareskinph.theBareskinApp.util.Constants;
-import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Retrofit;
-import retrofit2.http.DELETE;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;

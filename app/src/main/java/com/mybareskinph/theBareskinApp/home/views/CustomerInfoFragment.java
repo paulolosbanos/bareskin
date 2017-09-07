@@ -2,7 +2,6 @@ package com.mybareskinph.theBareskinApp.home.views;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,6 @@ import android.widget.EditText;
 
 import com.jakewharton.rxbinding.widget.RxTextView;
 import com.mybareskinph.theBareskinApp.R;
-import com.mybareskinph.theBareskinApp.base.BaseFragment;
-import com.mybareskinph.theBareskinApp.home.viewInterfaces.SupplyView;
-import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 import com.mybareskinph.theBareskinApp.util.Observables;
 
 import java.util.Arrays;
@@ -20,7 +16,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import rx.Observable;
-import rx.functions.FuncN;
 import rx.subjects.PublishSubject;
 
 public class CustomerInfoFragment extends FormFragments {

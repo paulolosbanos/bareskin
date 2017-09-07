@@ -1,7 +1,5 @@
 package com.mybareskinph.theBareskinApp.home.pojos;
 
-import com.mybareskinph.theBareskinApp.home.widgets.Order;
-
 /**
  * Created by paulolosbanos on 8/1/17.
  */

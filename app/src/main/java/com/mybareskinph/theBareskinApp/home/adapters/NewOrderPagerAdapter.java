@@ -1,27 +1,19 @@
 package com.mybareskinph.theBareskinApp.home.adapters;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
-import com.mybareskinph.theBareskinApp.home.implementations.NewOrderPresenterImpl;
-import com.mybareskinph.theBareskinApp.home.pojos.OrderUnit;
 import com.mybareskinph.theBareskinApp.home.views.CustomerInfoFragment;
 import com.mybareskinph.theBareskinApp.home.views.FormFragments;
-import com.mybareskinph.theBareskinApp.home.views.NewOrderActivity;
 import com.mybareskinph.theBareskinApp.home.views.OrderInfoFragment;
 import com.mybareskinph.theBareskinApp.home.views.OrderPlacementSuccessFragment;
 import com.mybareskinph.theBareskinApp.home.views.PaymentInfoFragment;
 import com.mybareskinph.theBareskinApp.home.views.ProductOrdersFragment;
 import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import rx.Observable;
 import rx.subjects.PublishSubject;
 
 public class NewOrderPagerAdapter extends FragmentStatePagerAdapter {
@@ -55,9 +47,10 @@ public class NewOrderPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         FormFragments fragment;
+        LoggerUtil.log(position);
         switch (position) {
             case 0:
-                fragment = ProductOrdersFragment.newInstance();
+                fragment = ProductOrdersFragment.newInstance(ProductOrdersFragment.NEW_ORDER_MODE);
                 ((ProductOrdersFragment) fragment)
                         .orderListWatcher()
                         .subscribe(orderUnits -> {
