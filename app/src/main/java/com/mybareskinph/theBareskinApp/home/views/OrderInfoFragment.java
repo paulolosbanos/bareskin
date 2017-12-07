@@ -75,6 +75,7 @@ public class OrderInfoFragment extends FormFragments implements OrderInfoView {
             priceBreakdown.setAdapter(priceBreakdownAdapter);
             priceBreakdown.setLayoutManager(new LinearLayoutManager(getContext()));
         });
+
         return view;
     }
 

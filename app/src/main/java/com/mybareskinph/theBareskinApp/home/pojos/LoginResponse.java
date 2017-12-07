@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LoginResponse {
 
@@ -25,6 +26,10 @@ public class LoginResponse {
     @SerializedName("store-orders")
     @Expose
     private ArrayList<StoreOrder> storeOrders = null;
+
+    private List<LocationMembers> distributors;
+
+    private List<LocationMembers> resellers;
 
     public String getStatus() {
         return status;
@@ -74,4 +79,11 @@ public class LoginResponse {
         this.storeOrders = storeOrders;
     }
 
+    public List<LocationMembers> getDistributors() {
+        return distributors;
+    }
+
+    public List<LocationMembers> getResellers() {
+        return resellers;
+    }
 }

@@ -39,4 +39,12 @@ public class HomePresenterImpl implements HomePresenter {
     public void onRegisterSalesClick() {
         mView.goToRegisterSalesPage();
     }
+
+    public void onSalesHistoryClick() {
+        Observable.just(null)
+                .delay(500, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(avoid -> mView.goToSalesHistoryPage());
+    }
 }

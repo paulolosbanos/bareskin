@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+        android:id="@+id/tv_ref_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/brightGreen"
+        android:textSize="14dp"
+        app:font="montserrat_regular" />
+
+    <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+        android:id="@+id/tv_buyer_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/darkerGrey"
+        android:textSize="14dp"
+        app:font="montserrat_regular" />
+
+    <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+        android:id="@+id/tv_buyer_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/darkerGrey"
+        android:textSize="14dp"
+        app:font="montserrat_regular" />
+
+    <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:gravity="center"
+        android:text="Products Sold"
+        android:textColor="@color/brightGreen"
+        android:textSize="16dp"
+        app:font="montserrat_regular" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_sales_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <com.mybareskinph.theBareskinApp.widgets.TypeFacedTextView
+        android:id="@+id/tv_transaction_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/darkerGrey"
+        android:textSize="10dp"
+        app:font="montserrat_regular" />
+
+</LinearLayout>

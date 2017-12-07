@@ -100,6 +100,8 @@ public class HomeActivity extends BaseActivity
                 toolbarTitle.setText("Orders");
                 break;
             case R.id.nav_about:
+                fragment = AboutUsFragment.newInstance();
+                toolbarTitle.setText("About Us");
                 break;
             case R.id.nav_log_out:
                 break;

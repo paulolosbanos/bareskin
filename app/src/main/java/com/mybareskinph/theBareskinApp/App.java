@@ -7,13 +7,19 @@ import retrofit2.Retrofit;
 public class App extends Application {
 
     public Retrofit retrofit;
-    //public static final String BASE_URL = "http://172.20.10.6:8087";
-    public static final String BASE_URL = "http://192.168.0.101:8087";
+
     private NetComponent mNetComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        String BASE_URL = String.format(
+                                    getString(R.string.format_colon_delimited),
+                                            BuildConfig.BARESKIN_SERVER_PROTOCOL +
+                                            BuildConfig.BARESKIN_SERVER_URL,
+                                            BuildConfig.BARESKIN_SERVER_PORT);
+
         mNetComponent = DaggerNetComponent.builder()
                 .appModule(new AppModule(this))
                 .netModule(new NetModule(BASE_URL))

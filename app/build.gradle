@@ -13,6 +13,10 @@ android {
         jackOptions {
             enabled true
         }
+        buildConfigField "String", "BARESKIN_SERVER_PROTOCOL", project.properties['bareskin_server_protocol'] ?: '"https://"'
+        buildConfigField "String", "BARESKIN_SERVER_URL", project.properties['bareskin_server_url'] ?: '"mbss-server.com"'
+        buildConfigField "String", "BARESKIN_SERVER_PORT", project.properties['bareskin_server_port'] ?: '"8087"'
+
     }
     buildTypes {
         release {

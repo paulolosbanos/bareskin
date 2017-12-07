@@ -18,6 +18,7 @@ import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
 import com.mybareskinph.theBareskinApp.home.pojos.UserCredential;
 import com.mybareskinph.theBareskinApp.home.viewInterfaces.HomeView;
 import com.mybareskinph.theBareskinApp.sale.views.RegisterSaleActivity;
+import com.mybareskinph.theBareskinApp.sale.views.SalesHistoryFragment;
 import com.mybareskinph.theBareskinApp.util.Constants;
 import com.mybareskinph.theBareskinApp.util.Money;
 import com.mybareskinph.theBareskinApp.util.StoreComputationUtil;
@@ -81,6 +82,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
         RxView.clicks(orderNow).subscribe(aVoid -> startActivity(new Intent(getContext(), NewOrderActivity.class)));
         RxView.clicks(sellNow).subscribe(aVoid -> presenter.onRegisterSalesClick());
+        RxView.clicks(salesHistory).subscribe(aVoid -> presenter.onSalesHistoryClick());
         return view;
     }
 
@@ -148,6 +150,15 @@ public class HomeFragment extends BaseFragment implements HomeView {
     public void goToSuppliesPage() {
         SupplyFragment fragment = SupplyFragment.newInstance((ArrayList<StoreItem>) getGlobalObjects().get(Constants.SUPPLIES));
         ((HomeActivity) getActivity()).changeCheckedNavTitle(R.id.nav_inventory);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment, fragment.getClass().getSimpleName())
+                .addToBackStack(fragment.getClass().getSimpleName())
+                .commit();
+    }
+
+    @Override
+    public void goToSalesHistoryPage() {
+        SalesHistoryFragment fragment = SalesHistoryFragment.newInstance();
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, fragment, fragment.getClass().getSimpleName())
                 .addToBackStack(fragment.getClass().getSimpleName())

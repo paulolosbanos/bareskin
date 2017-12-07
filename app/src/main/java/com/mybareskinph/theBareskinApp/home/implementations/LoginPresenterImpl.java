@@ -1,5 +1,6 @@
 package com.mybareskinph.theBareskinApp.home.implementations;
 
+import com.mybareskinph.theBareskinApp.home.pojos.LocationMembers;
 import com.mybareskinph.theBareskinApp.home.pojos.LoginRequest;
 import com.mybareskinph.theBareskinApp.home.pojos.LoginResponse;
 import com.mybareskinph.theBareskinApp.home.pojos.StoreItem;
@@ -13,6 +14,7 @@ import com.mybareskinph.theBareskinApp.util.LoggerUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.HttpException;
@@ -68,6 +70,8 @@ public class LoginPresenterImpl implements LoginPresenter {
                         loadOrders(loginResponse.getStoreOrders());
                         loadSupplies(loginResponse.getStoreInventory());
                         loadPersonalInfo(loginResponse.getUserCredential());
+                        loadDistributors(loginResponse.getDistributors());
+                        loadResellers(loginResponse.getResellers());
                         mView.showHome();
                     }
 
@@ -95,5 +99,15 @@ public class LoginPresenterImpl implements LoginPresenter {
     @Override
     public void loadPersonalInfo(UserCredential cred) {
         mView.getGlobalObjects().put(Constants.USER_INFO, cred);
+    }
+
+    @Override
+    public void loadDistributors(List<LocationMembers> distributors) {
+        mView.getGlobalObjects().put(Constants.DISTRIBUTORS, distributors);
+    }
+
+    @Override
+    public void loadResellers(List<LocationMembers> resellers) {
+        mView.getGlobalObjects().put(Constants.RESELLERS, resellers);
     }
 }

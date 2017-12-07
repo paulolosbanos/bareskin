@@ -22,4 +22,6 @@ public interface HomeView {
     void goToSuppliesPage();
 
     void goToRegisterSalesPage();
+
+    void goToSalesHistoryPage();
 }

@@ -23,4 +23,10 @@
     <string name="label_x_report_date">These are your %1$s as of %2$s</string>
     <string name="label_x_hyphen_word_x">%1$s - %2$s %3$s</string>
     <string name="label_x_pcs_ordered">%s pcs ordered</string>
+    <string name="format_colon_delimited">%1$s:%2$s</string>
+    <string name="label_ref_colon_value">Ref: %s</string>
+    <string name="label_buyer_name_colon_value">Buyer Name: %s</string>
+    <string name="label_buyer_number_colon_value">Buyer Number: %s</string>
+    <string name="label_transaction_date_colon_value">Transaction Date: %s</string>
+
 </resources>
